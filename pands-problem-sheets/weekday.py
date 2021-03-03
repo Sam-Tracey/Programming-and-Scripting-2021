@@ -1,4 +1,4 @@
-# This program output whether the current day is a week day or not.
+# This program output whether the current day is a week day or not using the datetime module.
 # Author: Sam Tracey
 
 from datetime import date                                               # Import datetime from the date modulde

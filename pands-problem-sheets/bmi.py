@@ -1,6 +1,6 @@
 # bmi.py
 # this code calculates a person's BMI or Body Mass Index
-# Author: Sam Tracey
+# Author: Sam Tracey.
 
 weight = int(input ("Please enter your weight in Kgs: "))
 height = int(input ("Please enter your height in Cm: "))

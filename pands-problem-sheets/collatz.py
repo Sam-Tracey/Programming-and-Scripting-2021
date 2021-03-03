@@ -1,8 +1,9 @@
 # Weekly task 4
-# Program asks theuser to input a positive number.
+# Program asks the user to input a positive number.
 # if the value entered is positive it is divided by 2.
 # if the value is negative it is multiplied by 3 and one is added.
 # the result from each calculation is appended to a list and once the calculation returs 1, the list is printed out.
+# Author: Sam Tracey
 
 
 list = []                                                       # define an empty list called list
