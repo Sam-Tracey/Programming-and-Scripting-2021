@@ -29,6 +29,7 @@ dfi.export(data.corr(method = 'pearson'), "table_2.png")
 
 
 
-sns.pairplot(data, hue='class', palette="OrRd")
-plt.show()
+sns_plot = sns.pairplot(data, hue='class', palette="OrRd")
+
+sns_plot.savefig("Image_1.png")
 
