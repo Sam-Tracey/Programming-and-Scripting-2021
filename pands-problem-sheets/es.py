@@ -25,4 +25,4 @@ else:
     # Testing to make sure that the correct argument is assigned to the variable
     # print("Book title is: ", fileName)
 
-print (letterCount(fileName, 'e'))
+    print (letterCount(fileName, 'e'))
