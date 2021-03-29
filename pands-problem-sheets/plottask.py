@@ -26,4 +26,6 @@ plt.xlabel("x Value")
 plt.grid(axis = 'y')
 plt.legend()
 
+# Displaying the plot on screen and saving a copy to the current directory.
 plt.show()
+plt.savefig('Week08Plot.png')
