@@ -25,11 +25,105 @@ print(data.isnull().sum())
 # reference for data.corr function: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html
 
 dfi.export(data.describe(), "table_1.png")
-dfi.export(data.corr(method = 'pearson'), "table_2.png")
+
+
+# Exploratory Data Analysis - Data Visualization - reference for mean markers on Zotero
+
+
+sns.set(style="darkgrid")
+sns.boxplot(x='class',
+            y='sepal length', 
+            data=data, 
+            order=["versicolor", "virginica", "setosa"],
+            showmeans = True, 
+            meanprops={"marker":"o",
+                       "markerfacecolor":"white", 
+                       "markeredgecolor":"black",
+                       "markersize":"10"})
+                       
+plt.title("Sepal Length by Iris Class", size = 16)
+plt.savefig("Image_1.png")
+plt.close()
+
+
+sns.set(style="darkgrid")
+sns.boxplot(x='class',
+            y='sepal width', 
+            data=data, 
+            order=["versicolor", "virginica", "setosa"],
+            showmeans = True, 
+            meanprops={"marker":"o",
+                       "markerfacecolor":"white", 
+                       "markeredgecolor":"black",
+                       "markersize":"10"})
+                       
+plt.title("Sepal Width by Iris Class", size = 16)
+plt.savefig("Image_2.png")
+plt.close()
+
+
+sns.set(style="darkgrid")
+sns.boxplot(x='class',
+            y='petal length', 
+            data=data, 
+            order=["versicolor", "virginica", "setosa"],
+            showmeans = True, 
+            meanprops={"marker":"o",
+                       "markerfacecolor":"white", 
+                       "markeredgecolor":"black",
+                       "markersize":"10"})
+                       
+plt.title("Petal Length by Iris Class", size = 16)
+plt.savefig("Image_3.png")
+plt.close()
+
+
+sns.set(style="darkgrid")
+sns.boxplot(x='class',
+            y='petal width', 
+            data=data, 
+            order=["versicolor", "virginica", "setosa"],
+            showmeans = True, 
+            meanprops={"marker":"o",
+                       "markerfacecolor":"white", 
+                       "markeredgecolor":"black",
+                       "markersize":"10"})
+                       
+plt.title("Petal Width by Iris Class", size = 16)
+plt.savefig("Image_4.png")
+plt.close()
+
+
+# KDE plots. The reference for adjusting the subplot margins is in Zotero
+
+sns.displot(data,  x="sepal length", hue="class", kind="kde", fill = True)
+plt.title("Sepal Length Kernal Density Estimation (KDE)", size = 16)
+plt.subplots_adjust(top=0.8)
+plt.savefig("Image_5.png")
+plt.close()
+
+sns.displot(data,  x="sepal width", hue="class", kind="kde", fill = True)
+plt.title("Sepal Width Kernal Density Estimation (KDE)", size = 16)
+plt.subplots_adjust(top=0.8)
+plt.savefig("Image_6.png")
+plt.close()
+
+sns.displot(data,  x="petal length", hue="class", kind="kde", fill = True)
+plt.title("Petal Length Kernal Density Estimation (KDE)", size = 16)
+plt.subplots_adjust(top=0.8)
+plt.savefig("Image_7.png")
+plt.close()
+
+sns.displot(data,  x="petal width", hue="class", kind="kde", fill = True)
+plt.title("Petal Width Kernal Density Estimation (KDE)", size = 16)
+plt.subplots_adjust(top=0.8)
+plt.savefig("Image_8.png")
+plt.close()
+# dfi.export(data.corr(method = 'pearson'), "table_2.png")
 
 
 
-sns_plot = sns.pairplot(data, hue='class', palette="OrRd")
+# sns_plot = sns.pairplot(data, hue='class', palette="OrRd")
 
-sns_plot.savefig("Image_1.png")
+# sns_plot.savefig("Image_1.png")
 
