@@ -8,10 +8,11 @@ import matplotlib.pyplot as plt
 import dataframe_image as dfi
 import seaborn as sns
 
+
 # First step is to read the iris.csv file in as a dataframe called data.
 # we then assign column headers for aesthetics.
 data = pd.read_csv('iris.csv')
-data.columns = ['sepal length', 'sepal width', 'petal length', 'petal width', 'class']
+data.columns = ['sepal length', 'sepal width', 'petal length', 'petal width', 'species']
 #print (data.describe())
 # print(data)
 
@@ -26,12 +27,21 @@ print(data.isnull().sum())
 
 dfi.export(data.describe(), "table_1.png")
 
+# Creating sub groups for each species of flower and describing the data for each group individually then saving to folder as png.
+setosa = data.loc[data.species== "setosa",:]
+dfi.export(setosa.describe(), "table_2.png")
+versicolor = data.loc[data.species== "versicolor",:]
+dfi.export(versicolor.describe(), "table_3.png")
+virginica = data.loc[data.species== "virginica",:]
+dfi.export(virginica.describe(), "table_4.png")
+
 
 # Exploratory Data Analysis - Data Visualization - reference for mean markers on Zotero
-
-
+# Boxplots using subplots to reduce number of images from 4 to 1.
 sns.set(style="darkgrid")
-sns.boxplot(x='class',
+fig, axs = plt.subplots(2, 2, figsize=(10, 10))             # https://matplotlib.org/3.1.0/gallery/subplots_axes_and_figures/subplots_demo.html
+
+sns.boxplot(x='species',
             y='sepal length', 
             data=data, 
             order=["versicolor", "virginica", "setosa"],
@@ -39,15 +49,8 @@ sns.boxplot(x='class',
             meanprops={"marker":"o",
                        "markerfacecolor":"white", 
                        "markeredgecolor":"black",
-                       "markersize":"10"})
-                       
-plt.title("Sepal Length by Iris Class", size = 16)
-plt.savefig("Image_1.png")
-plt.close()
-
-
-sns.set(style="darkgrid")
-sns.boxplot(x='class',
+                       "markersize":"10"}, ax=axs[0, 0])
+sns.boxplot(x='species',
             y='sepal width', 
             data=data, 
             order=["versicolor", "virginica", "setosa"],
@@ -55,15 +58,8 @@ sns.boxplot(x='class',
             meanprops={"marker":"o",
                        "markerfacecolor":"white", 
                        "markeredgecolor":"black",
-                       "markersize":"10"})
-                       
-plt.title("Sepal Width by Iris Class", size = 16)
-plt.savefig("Image_2.png")
-plt.close()
-
-
-sns.set(style="darkgrid")
-sns.boxplot(x='class',
+                       "markersize":"10"}, ax=axs[0, 1])
+sns.boxplot(x='species',
             y='petal length', 
             data=data, 
             order=["versicolor", "virginica", "setosa"],
@@ -71,15 +67,8 @@ sns.boxplot(x='class',
             meanprops={"marker":"o",
                        "markerfacecolor":"white", 
                        "markeredgecolor":"black",
-                       "markersize":"10"})
-                       
-plt.title("Petal Length by Iris Class", size = 16)
-plt.savefig("Image_3.png")
-plt.close()
-
-
-sns.set(style="darkgrid")
-sns.boxplot(x='class',
+                       "markersize":"10"}, ax=axs[1, 0])
+sns.boxplot(x='species',
             y='petal width', 
             data=data, 
             order=["versicolor", "virginica", "setosa"],
@@ -87,43 +76,29 @@ sns.boxplot(x='class',
             meanprops={"marker":"o",
                        "markerfacecolor":"white", 
                        "markeredgecolor":"black",
-                       "markersize":"10"})
-                       
-plt.title("Petal Width by Iris Class", size = 16)
-plt.savefig("Image_4.png")
-plt.close()
+                       "markersize":"10"}, ax=axs[1, 1])
+plt.suptitle("Boxplots of Petal and Sepal Width and Length", size = 20)     # https://www.delftstack.com/howto/matplotlib/how-to-set-a-single-main-title-for-all-the-subplots-in-matplotlib/
+plt.savefig("Image_1.png")
 
 
-# KDE plots. The reference for adjusting the subplot margins is in Zotero
 
-sns.displot(data,  x="sepal length", hue="class", kind="kde", fill = True)
-plt.title("Sepal Length Kernal Density Estimation (KDE)", size = 16)
-plt.subplots_adjust(top=0.8)
-plt.savefig("Image_5.png")
-plt.close()
+# KDE plots using subplots to reduce number of images from 4 to 1.
 
-sns.displot(data,  x="sepal width", hue="class", kind="kde", fill = True)
-plt.title("Sepal Width Kernal Density Estimation (KDE)", size = 16)
-plt.subplots_adjust(top=0.8)
-plt.savefig("Image_6.png")
-plt.close()
+fig, axs = plt.subplots(2, 2, figsize=(10, 10))
 
-sns.displot(data,  x="petal length", hue="class", kind="kde", fill = True)
-plt.title("Petal Length Kernal Density Estimation (KDE)", size = 16)
-plt.subplots_adjust(top=0.8)
-plt.savefig("Image_7.png")
-plt.close()
+sns.kdeplot(data=data, x="sepal length", hue="species", ax=axs[0, 0])
+sns.kdeplot(data=data, x="sepal width", hue="species", ax=axs[0, 1])
+sns.kdeplot(data=data, x="petal length", hue="species", ax=axs[1, 0])
+sns.kdeplot(data=data, x="petal width", hue="species", ax=axs[1, 1])
+plt.suptitle("Kernal Density Estimation (KDE)", size = 20)
+plt.savefig("Image_2.png")
 
-sns.displot(data,  x="petal width", hue="class", kind="kde", fill = True)
-plt.title("Petal Width Kernal Density Estimation (KDE)", size = 16)
-plt.subplots_adjust(top=0.8)
-plt.savefig("Image_8.png")
-plt.close()
+
 # dfi.export(data.corr(method = 'pearson'), "table_2.png")
 
 
 
-# sns_plot = sns.pairplot(data, hue='class', palette="OrRd")
+# sns_plot = sns.pairplot(data, hue='species', palette="OrRd")
 
 # sns_plot.savefig("Image_1.png")
 
