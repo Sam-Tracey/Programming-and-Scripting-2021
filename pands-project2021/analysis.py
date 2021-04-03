@@ -2,12 +2,13 @@
 # Author: Sam Tracey
 
 # Exploratory Data Analysis
-
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import dataframe_image as dfi
 import seaborn as sns
 import scipy.stats as stats
+from sklearn.linear_model import LinearRegression
 
 
 
@@ -25,7 +26,6 @@ print(data.isnull().sum())
 
 # dataframe_image.export allows us to save the output of the summarydata.describe as a .png file
 # reference: https://stackoverflow.com/a/63387275
-# reference for data.corr function: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html
 
 dfi.export(data.describe(), "table_1.png")
 
@@ -40,61 +40,43 @@ dfi.export(virginica.describe(), "table_4.png")
 
 
 # Exploratory Data Analysis - Data Visualization - reference for mean markers on Zotero
-# Boxplots using subplots to reduce number of images from 4 to 1.
+# Plotting boxplots for each column using a for loop to iterate through all columns in the data set (except species)
 sns.set(style="darkgrid")
-fig, axs = plt.subplots(2, 2, figsize=(10, 10))             # https://matplotlib.org/3.1.0/gallery/subplots_axes_and_figures/subplots_demo.html
 
-sns.boxplot(x='species',
-            y='sepal length', 
+for column in data.columns[:4]:  # Loop over all columns except 'Species'
+    sns.set()
+    fig, ax = plt.subplots()
+    sns.set(style="ticks")
+    sns.boxplot(x='species',
+            y=column,                                       # column is chosen from iris data set based on loop iteration
             data=data, 
             order=["versicolor", "virginica", "setosa"],
             showmeans = True, 
             meanprops={"marker":"o",
                        "markerfacecolor":"white", 
                        "markeredgecolor":"black",
-                       "markersize":"10"}, ax=axs[0, 0])
-sns.boxplot(x='species',
-            y='sepal width', 
-            data=data, 
-            order=["versicolor", "virginica", "setosa"],
-            showmeans = True, 
-            meanprops={"marker":"o",
-                       "markerfacecolor":"white", 
-                       "markeredgecolor":"black",
-                       "markersize":"10"}, ax=axs[0, 1])
-sns.boxplot(x='species',
-            y='petal length', 
-            data=data, 
-            order=["versicolor", "virginica", "setosa"],
-            showmeans = True, 
-            meanprops={"marker":"o",
-                       "markerfacecolor":"white", 
-                       "markeredgecolor":"black",
-                       "markersize":"10"}, ax=axs[1, 0])
-sns.boxplot(x='species',
-            y='petal width', 
-            data=data, 
-            order=["versicolor", "virginica", "setosa"],
-            showmeans = True, 
-            meanprops={"marker":"o",
-                       "markerfacecolor":"white", 
-                       "markeredgecolor":"black",
-                       "markersize":"10"}, ax=axs[1, 1])
-plt.suptitle("Boxplots of Petal and Sepal Width and Length", size = 20)     # https://www.delftstack.com/howto/matplotlib/how-to-set-a-single-main-title-for-all-the-subplots-in-matplotlib/
-plt.savefig("Image_1.png", dpi=300)
+                       "markersize":"10"})
+
+    # sns.boxplot(x='species', y=column, data=data)  # column is chosen here
+    sns.despine(offset=10, trim=True)
+    plt.title('Box Plot of {}'.format(column), fontsize=20)
+    fig.set_size_inches(8, 8)
+    plt.savefig('Boxplot_of_{}.png'.format(column), dpi=300)  # filename based on column name in Iris Data set
 
 
 
-# KDE plots using subplots to reduce number of images from 4 to 1.
 
-fig, axs = plt.subplots(2, 2, figsize=(10, 10))
+# KDE plots using for loop
+for column in data.columns[:4]:  # Loop over all columns except 'Species'
+    sns.set()
+    fig, ax = plt.subplots()  
+    sns.kdeplot(data=data, x=column, hue="species")    
+    plt.title('Kernal Density Estimation (KDE) Plot of {}'.format(column), fontsize=20)
+    fig.set_size_inches(8, 8)
+    plt.savefig('KDE_of_{}.png'.format(column), dpi=300)  # filename based on column name in Iris Data set
 
-sns.kdeplot(data=data, x="sepal length", hue="species", ax=axs[0, 0])
-sns.kdeplot(data=data, x="sepal width", hue="species", ax=axs[0, 1])
-sns.kdeplot(data=data, x="petal length", hue="species", ax=axs[1, 0])
-sns.kdeplot(data=data, x="petal width", hue="species", ax=axs[1, 1])
-plt.suptitle("Kernal Density Estimation (KDE)", size = 20)
-plt.savefig("Image_2.png", dpi=300)
+
+
 
 # Normality testing each individual species - reference saved for D'Agostino's K2 Test for normality
 print("\nFor Setosa Species:\n")
@@ -123,16 +105,32 @@ for param in ["sepal length", "sepal width", "petal length", "petal width"]:
 
 sns.displot(setosa, x="petal width", kde=True)              
 plt.title("Further Examination of Setosa Distribution", fontsize=14)
-plt.savefig("Image_3.png", bbox_inches="tight", dpi=300)            # reference available in zotero
+plt.savefig("Distribution_plot_Setosa.png", bbox_inches="tight", dpi=300)            # reference available in zotero
 
 
 #Examining correlation of petals and Sepals
-
+# reference for data.corr function: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html
 dfi.export(data.corr(method = 'pearson'), "table_5.png")
 dfi.export(setosa.corr(method = 'pearson'), "table_6.png")
 dfi.export(virginica.corr(method = 'pearson'), "table_7.png")
 dfi.export(versicolor.corr(method = 'pearson'), "table_8.png")
 
-sns_plot = sns.pairplot(data, hue='species', palette="OrRd")
-sns_plot.savefig("Image_4.png", dpi=300)
+# visualising correlations for each species - note setosa is an outlier.
+
+sns.pairplot(data, hue='species', palette="OrRd")
+plt.savefig("pairplot_by_species.png", dpi=300)
+
+
+
+sns.lmplot(x='sepal length', y='sepal width', data = data, hue = 'species', markers =[".", "x", "+"])
+plt.xlim(left=4, right=8)
+plt.savefig("regression_plot_sepal.png", bbox_inches="tight", dpi=300)
+
+sns.lmplot(x='petal length', y='petal width', data = data, hue = 'species', markers =[".", "x", "+"])
+plt.xlim(left=0.7, right=7)
+plt.savefig("regression_plot_petal.png", bbox_inches="tight", dpi=300)
+
+
+
+
 
