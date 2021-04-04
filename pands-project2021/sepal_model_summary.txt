@@ -1,0 +1,25 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:            sepal width   R-squared:                       0.014
+Model:                            OLS   Adj. R-squared:                  0.007
+Method:                 Least Squares   F-statistic:                     2.074
+Date:                Sun, 04 Apr 2021   Prob (F-statistic):              0.152
+Time:                        13:46:09   Log-Likelihood:                -86.732
+No. Observations:                 150   AIC:                             177.5
+Df Residuals:                     148   BIC:                             183.5
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+================================================================================
+                   coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------
+const            3.4189      0.254     13.484      0.000       2.918       3.920
+sepal length    -0.0619      0.043     -1.440      0.152      -0.147       0.023
+==============================================================================
+Omnibus:                        2.474   Durbin-Watson:                   1.263
+Prob(Omnibus):                  0.290   Jarque-Bera (JB):                1.994
+Skew:                           0.243   Prob(JB):                        0.369
+Kurtosis:                       3.288   Cond. No.                         43.4
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

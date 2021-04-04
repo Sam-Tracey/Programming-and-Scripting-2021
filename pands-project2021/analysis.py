@@ -2,13 +2,16 @@
 # Author: Sam Tracey
 
 # Exploratory Data Analysis
+from contextlib import redirect_stdout
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import dataframe_image as dfi
 import seaborn as sns
 import scipy.stats as stats
+import statsmodels.api as sm
 from sklearn.linear_model import LinearRegression
+
 
 
 
@@ -131,6 +134,58 @@ plt.xlim(left=0.7, right=7)
 plt.savefig("regression_plot_petal.png", bbox_inches="tight", dpi=300)
 
 
+plt.close('all')
+
+# Regression analysis
+
+x = data["petal width"].values.reshape(-1,1)
+y = data["petal length"].values.reshape(-1,1)
+x1 = data["sepal width"].values.reshape(-1,1)
+y1 = data["sepal length"].values.reshape(-1,1)
 
 
 
+reg = LinearRegression()
+reg.fit (x,y)
+predictions = reg.predict(x)
+reg1 = LinearRegression()
+reg1.fit (x1,y1)
+predictions1 = reg1.predict(x1)
+# plt.figure(figsize=(16, 8))
+plt.scatter(x, y, c = 'blue') 
+plt.plot(x, predictions, c = 'red')
+plt.xlabel("Petal Width")
+plt.ylabel("Petal Length")
+plt.title("Regression Analysis of Petal Width Versus Petal Length")
+plt.show()
+
+plt.scatter(x1, y1, c = 'blue') 
+plt.plot(x1, predictions1, c = 'red')
+plt.xlabel("Sepal Width")
+plt.ylabel("Sepal Length")
+plt.title("Regression Analysis of Sepal Width Versus Sepal Length")
+plt.show()
+
+
+X = data['petal length']
+y = data['petal width']
+X2 = sm.add_constant(X)
+est = sm.OLS(y, X2)
+est2 = est.fit()
+
+
+
+with open('petal_model_summary.txt', 'w') as f:     # redirecting the output of the model summary to a txt file
+    with redirect_stdout(f):
+        print(est2.summary())
+
+
+X = data['sepal length']
+y = data['sepal width']
+X2 = sm.add_constant(X)
+est = sm.OLS(y, X2)
+est2 = est.fit()
+
+with open('sepal_model_summary.txt', 'w') as f:     # redirecting the output of the model summary to a txt file
+    with redirect_stdout(f):
+        print(est2.summary())
