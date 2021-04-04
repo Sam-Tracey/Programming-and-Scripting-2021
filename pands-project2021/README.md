@@ -1,10 +1,10 @@
 ![Index GMIT](media/47d94fa74dbb3b94dce1e246799237ad.png)
 
-<div align="center">Sam Tracey.</div>
+Sam Tracey
 
-\-\>Student Number: G00398245\<-
+Student Number: G00398245
 
-\-\>Programming and Scripting Project 2021\<-
+Programming and Scripting Project 2021
 
 **Introduction**
 
@@ -24,10 +24,27 @@ analysis has a large cost saving implication for my employer.
 
 **The Iris Dataset.**
 
-![The Iris Dataset — A Little Bit of History and Biology \| by Yong Cui \| 
+![The Iris Dataset — A Little Bit of History and Biology \| by Yong Cui \|
 Towards Data Science](media/63b5516414cfe15f96be4c997286ca5c.jpeg)
 
-[1] Minitab (2021) *Single User Annual Subscription License.*  Available at:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+for column in data.columns[:4]:  # Loop over all columns except 'Species'
+    sns.set()
+    fig, ax = plt.subplots()
+    sns.set(style='ticks')
+    sns.boxplot(x='species',
+            y=column,                                       # column is chosen from iris data set based on loop iteration
+            data=data, 
+            order=['versicolor', 'virginica', 'setosa'],
+            showmeans = True, 
+            meanprops={'marker':'o',
+                       'markerfacecolor':'white', 
+                       'markeredgecolor':'black',
+                       'markersize':'10'})
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[1] Minitab (2021) *Single User Annual Subscription License.* Available at:
 <https://store.minitab.com/781/purl-minitab> (Accessed 04 April 2021)
 
 [2] University of California Irvine (2021) Available at:
