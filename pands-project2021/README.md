@@ -1,6 +1,6 @@
 ![Index GMIT](media/47d94fa74dbb3b94dce1e246799237ad.png)
 
-\-\>Sam Tracey.\<-
+<div align="center">Sam Tracey.</div>
 
 \-\>Student Number: G00398245\<-
 
