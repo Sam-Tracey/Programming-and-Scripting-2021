@@ -1,10 +1,10 @@
 ![Index GMIT](media/47d94fa74dbb3b94dce1e246799237ad.png)
 
->   Sam Tracey.
+\-\>Sam Tracey.\<-
 
->   Student Number: G00398245
+\-\>Student Number: G00398245\<-
 
->   Programming and Scripting Project 2021
+\-\>Programming and Scripting Project 2021\<-
 
 **Introduction**
 
