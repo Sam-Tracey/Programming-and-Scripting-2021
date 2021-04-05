@@ -29,3 +29,8 @@ plt.legend()
 # Displaying the plot on screen and saving a copy to the current directory.
 plt.savefig('Week08Plot.png')
 plt.show()
+
+# References:
+# https://realpython.com/python-matplotlib-guide/
+# https://matplotlib.org/2.0.2/users/pyplot_tutorial.html
+# https://www.w3schools.com/python/matplotlib_plotting.asp

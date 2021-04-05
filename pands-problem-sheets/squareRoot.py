@@ -26,3 +26,8 @@ while userNumber < 0:
 # Call the function passing in userNumber which was input by the user as an argument
 rootNumber = sqrt(userNumber)
 print("The sqaure root of {} is approximately {}".format(userNumber, rootNumber))
+
+
+# References:
+# https://pages.mtu.edu/~shene/COURSES/cs201/NOTES/chap06/sqrt-1.html
+# https://www.youtube.com/watch?v=tUFzOLDuvaE

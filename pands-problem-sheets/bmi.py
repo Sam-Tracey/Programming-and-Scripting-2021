@@ -11,4 +11,5 @@ bmi = weight / ((height/100)**2)
 
 
 # rounding the output to the required number of decimal places and outputting the answer on screen
+# Reference for round() function: https://www.w3schools.com/python/ref_func_round.asp
 print("BMI is " + str(round((bmi),2)))

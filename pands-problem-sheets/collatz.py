@@ -13,10 +13,15 @@ userInput = int(input("Please enter a positive number "))       # ask the user t
 while userInput != 1:                                           # counter controlled loop which will repeat until the value of userInput = 1
     list.append(userInput)                                      # append the value of userInput to the list
     if (userInput % 2 == 0):                                    # for loop to check whether the value of userInput is positive or negative
-        userInput = int(userInput / 2)                          # if positive userInput is decalred as userInput divided by 2
+        userInput = int(userInput / 2)                          # if positive userInput is declared as userInput divided by 2
     else:
         userInput = int(userInput * 3 + 1)                      # if negative, userInput is declared as userInput * 3 + 1
         
 
 
 print(*list, sep=" ")                                           # found this on stack overflow, handy way to print the contents of a list without the brackets.
+
+
+# References:
+# http://introtopython.org/while_input.html (appending list with user input)
+# https://stackoverflow.com/questions/11178061/print-list-without-brackets-in-a-single-row

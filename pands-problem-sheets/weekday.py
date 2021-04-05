@@ -12,3 +12,5 @@ if today in weekDay:                                                    # determ
 else:
     print("It is the weekend, yay!")                                    # Output if today is not in list weekDay
 
+# References:
+# https://pythontic.com/datetime/date/weekday (Using Python datetime function)
