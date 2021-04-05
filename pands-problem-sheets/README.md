@@ -141,18 +141,21 @@ It is the weekend, yay!
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# This program output whether the current day is a week day or not using the datetime module.
+# Author: Sam Tracey
 
+from datetime import date                                               # Import datetime from the date modulde
 
+today = date.today()                                                    # assign the current day based on system date to variable today
+weekDay = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")      # assign the day corresponding to week days to list weekDay
 
- datetime  date                                               
+if today in weekDay:                                                    # determine if the value stored in today is in the list weekDay
+    print("Yes, unfortunately today is a weekday")                      # Output if today is in weekDay
+else:
+    print("It is the weekend, yay!")                                    # Output if today is not in list weekDay
 
-today = date.today()                                                    
-weekDay = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")      
-
- today in weekDay:                                                    
-    print("Yes, unfortunately today is a weekday")                      
-:
-    print("It is the weekend, yay!")                                    
+# References:
+# https://pythontic.com/datetime/date/weekday (Using Python datetime function)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Weekly Task 6**
