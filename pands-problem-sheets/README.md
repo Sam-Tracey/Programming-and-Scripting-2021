@@ -1,10 +1,16 @@
-**Programming and Scripting Module 2021.**
+# Programming and Scripting Module 2021.
 
-**Problem Set Solutions**
+# 
 
-**Name: Sam Tracey**
+# Problem Set Solutions
 
-**Student ID: G00398245**
+# 
+
+# Name: Sam Tracey
+
+# 
+
+# Student ID: G00398245
 
 This repository contains solutions to the Problem Sets for the programming and
 scripting module.
