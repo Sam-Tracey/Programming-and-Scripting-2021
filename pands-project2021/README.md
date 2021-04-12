@@ -722,22 +722,25 @@ that is currently used which has a price of €1709.70 per license. We have
 demonstrated that in a relatively short period of time, a complete novice Python
 programmer with only 8 weeks of experience, is able to replicate everything that
 would typically be performed in terms of exploratory data analysis and
-regression analysis. Furthermore we are only really scratching the surface in terms\
+regression analysis. Furthermore we are only really scratching the surface in terms
 of what can be done with Python.\
-Our current software is very limited when it comes to predictive analytics.\ 
-Only two tools are offered: Classification and Regression Trees for continuous variables\
-and Classification and Regression Trees for categorical variables.\
-Python on the otherhand is reknowned for its data science and machine learning libraries.\
-Libraries such as Keras, SciKit-Learn, PyTorch and TensorFlow are designed specifically for \
-data science, machine learning and predictive analytics. Also, as Python is open source, \
-there is an abundance of material freely available online to show how to use these libraries. \
-One objection that may be raised for using Python over an "off the shelf" analysis package \
-is the fact that it takes quite a lot of coding to do the same amount of work using Python which \
-can be achieved in 30 minutes using a graphical user interfaced package. \ The good news is \
-that libraries such as Bokeh exist which enable interactive data visualizations to be created. \
-The use of Bokeh would allow someone with a little experience in Python to create \
-an HTML based platform to perform any exploratory analysis that they may need to carry out \
+Our current software is very limited when it comes to predictive analytics.
+Only two tools are offered: Classification and Regression Trees for continuous variables
+and Classification and Regression Trees for categorical variables.
+Python on the otherhand is reknowned for its data science and machine learning libraries.
+Libraries such as Keras, SciKit-Learn, PyTorch and TensorFlow are designed specifically for 
+data science, machine learning and predictive analytics. Also, as Python is open source, 
+there is an abundance of material freely available online to show how to use these libraries. 
+One objection that may be raised for using Python over an "off the shelf" analysis package 
+is the fact that it takes quite a lot of coding to do the same amount of work using Python which 
+can be achieved in 30 minutes using a graphical user interfaced package. \ The good news is 
+that libraries such as Bokeh exist which enable interactive data visualizations to be created. 
+The use of Bokeh would allow someone with a little experience in Python to create 
+an HTML based platform to perform any exploratory analysis that they may need to carry out 
 on a dataset without the need for programming experience. [27] 
+<br/>
+<br/>
+<br/>
 # References:
 
 [1] *Minitab (2021)* *Single User Annual Subscription License.* Available at:
