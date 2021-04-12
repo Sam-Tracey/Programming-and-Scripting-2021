@@ -20,7 +20,9 @@
 * [Linear Regression Modelling](#linear-regression-modelling)
 * [Summary](#summary)
 * [References](#references)
-
+<br/>
+<br/>
+<br/>
 
 # 
 
@@ -39,7 +41,9 @@ language.
 As Python has been developed under an OSI-approved Open Source license [3] it is
 free to use and readily available to anyone. Being able to use Python for data
 analysis has a large cost saving implication for my employer.
-
+<br/>
+<br/>
+<br/>
 # The Iris Dataset.
 
 ![The Iris Dataset — A Little Bit of History and Biology \| by Yong Cui \|
@@ -76,7 +80,9 @@ Further investigation of Fisher’s paper [6] corroborated this statement and
 there are mistakes on the 35th sample and 38th sample. For this body of work, I
 amended the data set downloaded from University of California Irvine to match
 Fisher’s data set as it was recorded originally.
-
+<br/>
+<br/>
+<br/>
 # Methods
 
 The following software, modules and files were used throughout this project:
@@ -114,7 +120,9 @@ While I will give some details on the statistical tools used, I will not be
 going into great detail on the techniques themselves. This goal of this project
 is to determine if Python could be used to replace our current software package
 for everyday analysis.
-
+<br/>
+<br/>
+<br/>
 # Exploratory Data Analysis
 
 Exploratory data analysis or EDA for short is a term coined by American
@@ -123,7 +131,9 @@ what it seems to say” [7]. By using summary data, statistical graphics (such a
 box plots, scatter plots and histograms for example) and other visualisation
 techniques we attempt to investigate the data to understand patterns, detect
 outliers and find interesting relationships amongst the variables [8].
-
+<br/>
+<br/>
+<br/>
 ## Importing the Necessary Modules and Loading the Iris Dataset
 
 The first part of analysis in both Minitab and Python is to import all modules
@@ -182,7 +192,9 @@ print(data.head())
 The output from this command is displayed on the terminal:
 
 ![](media/2fe767d238caaaa8253598793347329c.png)
-
+<br/>
+<br/>
+<br/>
 We can compare this with the CSV file and see that they are identical except for
 the column headers which we changed.
 
@@ -226,7 +238,9 @@ This code prints the following information on screen:
 ![](media/84d83f571e725abb26ccd78eb856dc88.png)
 
 **Table 2. Python Descriptive Statistics Table for The Iris Data Set.**
-
+<br/>
+<br/>
+<br/>
 Comparing tables 1 and 2 we can see that both Minitab and Python detail the
 mean, standard deviation, minimum, maximum and quantile information. The one
 piece of information that is provided by Minitab but not Python is the number of
@@ -241,7 +255,9 @@ print(data.isnull().sum())
 ![](media/ae046068637c0721b71e3d9e8c272dea.png)
 
 **Table 3. Python Terminal Output Detailing The Number of Missing Data Points.**
-
+<br/>
+<br/>
+<br/>
 It is also possible to split the original Dataframe that we created in Python to
 provide descriptive statistics for the three species of Iris separately [12]:
 
@@ -261,17 +277,23 @@ descriptive statistics tables as .png files to the project folder. [13]
 generated](media/128c0fe1b01037a4a3fd8f197636a7da.png)
 
 **Table 4. Descriptive Statistics for Setosa Species**
-
+<br/>
+<br/>
+<br/>
 ![Table Description automatically
 generated](media/b9d24ce49cc2e719c1a07b5f039e57d0.png)
 
 **Table 5. Descriptive Statistics for Versicolor Species**
-
+<br/>
+<br/>
+<br/>
 ![Table Description automatically
 generated](media/d1c99c09037f58fa075ecef6d7554463.png)
 
 **Table 6. Descriptive Statistics for Virginica Species**
-
+<br/>
+<br/>
+<br/>
 ## Graphical Displays
 
 We use graphical displays as they complement tabular data that we obtain from
@@ -279,7 +301,9 @@ descriptive statistics. Graphs are often easier to interpret and better suited
 to identifying patterns in the underlying data set than tables. We are going to
 further analyse the Iris data set using Box Plots, scatter plots, density plots
 (KDE) and pair plots using both Minitab and Python.
-
+<br/>
+<br/>
+<br/>
 ### Boxplots
 
 Also known as box and whisker plots, the boxplot displays values of the
@@ -293,7 +317,9 @@ these will be represented by asterisks.
 ![box plot](media/249484119e9c58d1c989891bfb2ee52a.png)
 
 **Figure 1. Anatomy of the box plot [14].**
-
+<br/>
+<br/>
+<br/>
 Using Minitab we can create boxplots for all the variables (sepal length, sepal
 width, petal length and petal width) then colour each of the variables by an
 attribute – in this case we’ve coloured by species. We can also add a mean
@@ -304,7 +330,9 @@ us an indication of any skewness that may exist in the data.
 generated](media/51258535d4d903bf3332907681f9334b.png)
 
 **Figure 2. Box plots of the Iris Data Set variables using Minitab.**
-
+<br/>
+<br/>
+<br/>
 To replicate this output in Python we make use of the Seaborn module to create
 the box plots. Initially I had separate lines of code to display a box plot for
 each column of data but was able to research a method to use a for loop to
@@ -343,7 +371,9 @@ The boxplots produced are displayed below:
 generated](media/f31626fb9919332ba3dd78282b21cb1c.png)
 
 **Figure 3. Box plots of the Iris Data Set variables using Python.**
-
+<br/>
+<br/>
+<br/>
 ### Density Plots
 
 A density plot represents the distribution of a numerical variable. It is
@@ -359,7 +389,9 @@ bars. This generates density plots as shown below:
 generated](media/4ce96fc1c020990e2759d49059fe4fee.png)
 
 **Figure 4. Density plots of the Iris Data Set variables using Minitab.**
-
+<br/>
+<br/>
+<br/>
 Once again, using the Seaborn module we can replicate this output in Python.
 Using the same for loop concept as described in the boxplot section we can
 iterate over each of the columns in our DataFrame, create the four density plots
@@ -382,7 +414,9 @@ The plots below are output:
 automatically generated](media/0867537fd758ec2ba198303e4af52403.png)
 
 **Figure 5. Density plots of the Iris Data Set variables using Python.**
-
+<br/>
+<br/>
+<br/>
 You will notice that there are distinct differences between the output of the
 density plots generated in Python compared to those from Minitab. Where Minitab
 only allows you to display a normal distribution for each variable the Seaborn
@@ -393,7 +427,9 @@ data set. [18]
 
 The output from the Seaborn KDE graphs is a better depiction of the true density
 distributions for our data set.
-
+<br/>
+<br/>
+<br/>
 ## Normality Testing
 
 Before we begin to look at statistical methods such as correlation or regression
@@ -417,7 +453,9 @@ generated](media/d35280962949f9d0c850eb7916164936.png)
 
 **Figure 6. Evaluating the normality of the petal length for the Setosa species
 in Minitab.**
-
+<br/>
+<br/>
+<br/>
 Normality testing in Python can be performed using Scipy’s normaltest
 statistical function. [20] Normaltest will take a DataFrame and return the
 calculated z-score and P-value for the continuous data contained in the
@@ -455,7 +493,9 @@ print('\nFor Versicolor Species:\n')
 ![](media/4d607976fbd857585633347dcb63d3e7.png)
 
 **Figure 7. Terminal output for normality testing from Python script.**
-
+<br/>
+<br/>
+<br/>
 From the output we can see that the petal width data for the Setosa species of
 Iris does not follow a normal distribution so we can further investigate this in
 Python by plotting a distribution plot using the seaborn module:
@@ -471,7 +511,9 @@ plt.close()
 generated](media/ac58d8ccb7f01dfc28473460c9ca611f.png)
 
 **Figure 8. Distribution plot for petal width of Setosa species.**
-
+<br/>
+<br/>
+<br/>
 ## Correlation and Regression
 
 Correlation and regression are methods of assessing the strength of an
@@ -491,7 +533,9 @@ the other variables and colouring by species:
 generated](media/693560d74e568d11a723f380f96109aa.png)
 
 **Figure 9. Minitab Matrix Plot for all Iris Variables.**
-
+<br/>
+<br/>
+<br/>
 The Seaborn module has a fabulous function called the pairplot which generates a
 similar, but in my opinion, superior graph using one line of code!
 
@@ -504,7 +548,9 @@ plt.close()
 ![](media/9c32ade9768acb3b7410530a317d5cf5.png)
 
 **Figure 10. Seaborn Pair Plot for each Iris variable.**
-
+<br/>
+<br/>
+<br/>
 From this output we can see what appears to be a very good correlation between
 petal length and petal width. There also seems to be some correlation between
 petal width and sepal length.
@@ -520,7 +566,9 @@ dfi.export(data.corr(method = 'pearson'), 'table_5.png')
 generated](media/a8dcecb65b8cf8d40e7e97c9808bb996.png)
 
 **Figure 11. Pearson pairwise correlation values for the Iris Data Set.**
-
+<br/>
+<br/>
+<br/>
 Scatter plots in Minitab are often used to visualise potential regressions. The
 output below is evaluating petal length versus petal width and sepal length
 versus sepal width:
@@ -529,7 +577,9 @@ versus sepal width:
 generated](media/d225b861a2efdabbe542f8939a931301.png)
 
 **Figure 12. Minitab Scatter plot with regression lines fitted.**
-
+<br/>
+<br/>
+<br/>
 Using Seaborn we can replicate this output in Python in relatively few lines of
 code using the lmplot function [24]
 
@@ -549,7 +599,9 @@ plt.close()
 generated](media/ccda5b11e0d8ff6a03b5cc8902e9d3c8.png)
 
 **Figure 13. Seaborn lmplot output by script.**
-
+<br/>
+<br/>
+<br/>
 # Linear Regression Modelling
 
 While the simple regression plots and correlation values presented in the
@@ -575,7 +627,9 @@ independent variable:
 confidence](media/5cc572640925c54dcf0c7defb99e5217.png)
 
 **Figure 14.Minitab Linear Regression model for petal length and petal width.**
-
+<br/>
+<br/>
+<br/>
 In this output we observe the regression equation that we can use for
 prediction, the model summary which tells us how well the model fits the data an
 ANOVA table describing the sources of variance and finally a table listing any
@@ -625,12 +679,16 @@ with open('sepal_model_summary.txt', 'w') as f:     # redirecting the
 
 **Figure 15. Summary for Petal length and width linear regression model from
 Python**
-
+<br/>
+<br/>
+<br/>
 **![](media/8b03f34e1bcc66f24f2f62078e3e1b39.png)**
 
 **Figure 16. Summary for Sepal length and width linear regression model from
 Python**
-
+<br/>
+<br/>
+<br/>
 While the model summaries produced are detailed and contain all the important
 information required to ascertain the quality of the models, they do not display
 the linear regression equation.
@@ -643,11 +701,15 @@ print('Model Parameters: ', results.params)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ![](media/71d9c60ea93b1fe291864a20c6fbf5b0.png)
-
+<br/>
+<br/>
+<br/>
 From this we can now formulate the linear regression equation: *petal length =
 1.083558 + 2.229940 \* petal width*. This is an exact match to the equation
 produced by Minitab.
-
+<br/>
+<br/>
+<br/>
 # Summary
 
 The purpose of this project was to determine if Python could be used by my
