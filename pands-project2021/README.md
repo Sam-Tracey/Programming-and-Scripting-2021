@@ -6,16 +6,23 @@
 | Course: Programming and Scripting Project 2021 |
 | Tutor: Andrew Beatty                           |
 
+## Table of contents
+* [The Iris Dataset](#the-iris-dataset)
+* [Methods](#methods)
+* [Exploratory Data Analysis](#exploratory-data-analysis)
+    * [Importing The Necessary Modules and Loading the Iris Dataset](#importing-the-necessary-modules-and-loading-the-iris-dataset)
+    * [Descriptive Statistics](#descriptive-statistics)
+	* [Graphical Displays](#graphical-displays)	
+		* [Boxplots](#boxplots)
+		* [Density Plots](#density-plots)
+    * [Normality Testing](#normality-testing)
+    * [Correlation and Regression](#correlation-and-regression)
+* [Linear Regression Modelling](#linear-regression-modelling)
+* [Summary](#summary)
+* [References](#references)
+
+
 # 
-
-[The Iris Dataset.](#_The_Iris_Dataset.)
-
-[Methods](#_Methods)
-
-[Exploratory Data Analysis](#_Exploratory_Data_Analysis)
-
-[Importing the Necessary Modules and Loading the Iris Data
-Set](#_Importing_the_Necessary)
 
 # Introduction
 
@@ -117,7 +124,7 @@ box plots, scatter plots and histograms for example) and other visualisation
 techniques we attempt to investigate the data to understand patterns, detect
 outliers and find interesting relationships amongst the variables [8].
 
-## Importing the Necessary Modules and Loading the Iris Data Set
+## Importing the Necessary Modules and Loading the Iris Dataset
 
 The first part of analysis in both Minitab and Python is to import all modules
 that we will be using and to load the data to be analysed into the software.
