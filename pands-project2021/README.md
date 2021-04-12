@@ -24,8 +24,6 @@
 <br/>
 <br/>
 
-# 
-
 # Introduction
 
 This repository has been created to document my project work for the 2021
@@ -206,9 +204,11 @@ the column headers which we changed.
 | 4.6          | 3.1         | 1.5          | 0.2         | setosa  |
 | 5            | 3.6         | 1.4          | 0.2         | setosa  |
 
-## 
+<br/>
+<br/>
+<br/>
 
-## 
+
 
 ## Descriptive Statistics
 
@@ -223,7 +223,9 @@ with the following summary table:
 generated](media/13a77d66c11b4dbb5e39d48f194a8ea7.png)
 
 **Table 1. Minitab’s Descriptive Statistics Table For The Iris Data Set.**
-
+<br/>
+<br/>
+<br/>
 In Python we can also generate a table of descriptive statistics using a few
 lines of code [10]:
 
@@ -269,6 +271,8 @@ dfi.export(versicolor.describe(), 'table_3.png')
 virginica = data.loc[data.species== 'virginica',:]
 dfi.export(virginica.describe(), 'table_4.png')
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<br/>
+<br/>
 
 I have used the dfi.export function in this case to export the three separate
 descriptive statistics tables as .png files to the project folder. [13]
@@ -718,8 +722,22 @@ that is currently used which has a price of €1709.70 per license. We have
 demonstrated that in a relatively short period of time, a complete novice Python
 programmer with only 8 weeks of experience, is able to replicate everything that
 would typically be performed in terms of exploratory data analysis and
-regression analysis.
-
+regression analysis. Furthermore we are only really scratching the surface in terms\
+of what can be done with Python.\
+Our current software is very limited when it comes to predictive analytics.\ 
+Only two tools are offered: Classification and Regression Trees for continuous variables\
+and Classification and Regression Trees for categorical variables.\
+Python on the otherhand is reknowned for its data science and machine learning libraries.\
+Libraries such as Keras, SciKit-Learn, PyTorch and TensorFlow are designed specifically for \
+data science, machine learning and predictive analytics. Also, as Python is open source, \
+there is an abundance of material freely available online to show how to use these libraries. \
+One objection that may be raised for using Python over an "off the shelf" analysis package \
+is the fact that it takes quite a lot of coding to do the same amount of work using Python which \
+can be achieved in 30 minutes using a graphical user interfaced package. \ The good news is \
+that libraries such as Bokeh exist which enable interactive data visualizations to be created. \
+The use of Bokeh would allow someone with a little experience in Python to create \
+an HTML based platform to perform any exploratory analysis that they may need to carry out \
+on a dataset without the need for programming experience. [27] 
 # References:
 
 [1] *Minitab (2021)* *Single User Annual Subscription License.* Available at:
@@ -827,3 +845,7 @@ Startup \| Medium* (no date). Available at:
 [26] *Ordinary Least Squares — statsmodels* (no date). Available at:
 <https://www.statsmodels.org/devel/examples/notebooks/generated/ols.html>
 (Accessed: 18 April 2021).
+
+[27] *Interactive Data Visualization in Python With Bokeh* (2019). Available at: \
+<https://realpython.com/python-data-visualization-bokeh/> /
+(Accessed: 22 April 2021)
