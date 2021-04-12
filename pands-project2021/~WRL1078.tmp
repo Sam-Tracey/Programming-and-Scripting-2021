@@ -8,15 +8,6 @@
 
 # 
 
-[The Iris Dataset.](#_The_Iris_Dataset.)
-
-[Methods](#_Methods)
-
-[Exploratory Data Analysis](#_Exploratory_Data_Analysis)
-
-[Importing the Necessary Modules and Loading the Iris Data
-Set](#_Importing_the_Necessary)
-
 # Introduction
 
 This repository has been created to document my project work for the 2021
@@ -642,14 +633,6 @@ From this we can now formulate the linear regression equation: *petal length =
 produced by Minitab.
 
 # Summary
-
-The purpose of this project was to determine if Python could be used by my
-company to replace the current “off the shelf” statistical analysis software
-that is currently used which has a price of €1709.70 per license. We have
-demonstrated that in a relatively short period of time, a complete novice Python
-programmer with only 8 weeks of experience, is able to replicate everything that
-would typically be performed in terms of exploratory data analysis and
-regression analysis.
 
 # References:
 

@@ -10,7 +10,7 @@ import dataframe_image as dfi
 import seaborn as sns
 import scipy.stats as stats
 import statsmodels.api as sm
-from sklearn.linear_model import LinearRegression
+# from sklearn.linear_model import LinearRegression
 
 
 
