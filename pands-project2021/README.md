@@ -29,19 +29,6 @@ Towards Data Science](media/63b5516414cfe15f96be4c997286ca5c.jpeg)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-for column in data.columns[:4]:  # Loop over all columns except 'Species'
-    sns.set()
-    fig, ax = plt.subplots()
-    sns.set(style='ticks')
-    sns.boxplot(x='species',
-            y=column,                                       # column is chosen from iris data set based on loop iteration
-            data=data, 
-            order=['versicolor', 'virginica', 'setosa'],
-            showmeans = True, 
-            meanprops={'marker':'o',
-                       'markerfacecolor':'white', 
-                       'markeredgecolor':'black',
-                       'markersize':'10'})
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 [1] Minitab (2021) *Single User Annual Subscription License.* Available at:

@@ -65,7 +65,7 @@ for column in data.columns[:4]:  # Loop over all columns except 'Species'
     plt.title('Box Plot of {}'.format(column), fontsize=20)
     fig.set_size_inches(8, 8)
     plt.savefig('Boxplot_of_{}.png'.format(column), dpi=300)  # filename based on column name in Iris Data set
-
+plt.close()
 
 
 
@@ -77,7 +77,7 @@ for column in data.columns[:4]:  # Loop over all columns except 'Species'
     plt.title('Kernal Density Estimation (KDE) Plot of {}'.format(column), fontsize=20)
     fig.set_size_inches(8, 8)
     plt.savefig('KDE_of_{}.png'.format(column), dpi=300)  # filename based on column name in Iris Data set
-
+plt.close('all')                                          # Since this block creates 4 separate graphs we used close all to shut them all down.
 
 
 
@@ -110,7 +110,7 @@ for param in ['sepal length', 'sepal width', 'petal length', 'petal width']:
 sns.displot(setosa, x='petal width', kde=True)              
 plt.title('Further Examination of Setosa Distribution', fontsize=14)
 plt.savefig('Distribution_plot_Setosa.png', bbox_inches='tight', dpi=300)            # reference available in zotero
-
+plt.close()
 
 #Examining correlation of petals and Sepals
 # reference for data.corr function: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html
@@ -123,19 +123,19 @@ dfi.export(versicolor.corr(method = 'pearson'), 'table_8.png')
 
 sns.pairplot(data, hue='species', palette='OrRd')
 plt.savefig('pairplot_by_species.png', dpi=300)
-
+plt.close()
 
 
 sns.lmplot(x='sepal length', y='sepal width', data = data, hue = 'species', markers =['.', 'x', '+'])
 plt.xlim(left=4, right=8)
 plt.savefig('regression_plot_sepal.png', bbox_inches='tight', dpi=300)
+plt.close()
 
 sns.lmplot(x='petal length', y='petal width', data = data, hue = 'species', markers =['.', 'x', '+'])
 plt.xlim(left=0.7, right=7)
 plt.savefig('regression_plot_petal.png', bbox_inches='tight', dpi=300)
+plt.close()
 
-
-plt.close('all')
 
 # Regression analysis. Reference: https://towardsdatascience.com/the-complete-guide-to-linear-regression-in-python-3d3f8f06bf8
 # Reference: https://realpython.com/linear-regression-in-python/
@@ -161,14 +161,17 @@ plt.plot(x, predictions, c = 'red')
 plt.xlabel('Petal Width')
 plt.ylabel('Petal Length')
 plt.title('Regression Analysis of Petal Width Versus Petal Length')
-plt.show()
+plt.savefig('regression_analysis_petal.png', bbox_inches='tight', dpi=300)
+plt.close()
+
 
 plt.scatter(x1, y1, c = 'blue')                            # use plt scatterplot to visualise the fitted regression model on the sepal data   
 plt.plot(x1, predictions1, c = 'red')
 plt.xlabel('Sepal Width')
 plt.ylabel('Sepal Length')
 plt.title('Regression Analysis of Sepal Width Versus Sepal Length')
-plt.show()
+plt.savefig('regression_analysis_sepal.png', bbox_inches='tight', dpi=300)
+plt.close()
 
 
 # reference : https://www.statsmodels.org/stable/gettingstarted.html
