@@ -20,6 +20,13 @@ from sklearn.linear_model import LinearRegression
 # Finally we display the summary statistics to the screen
 data = pd.read_csv('iris.csv')
 data.columns = ['sepal length', 'sepal width', 'petal length', 'petal width', 'species']
+
+# Print the top 5 lines of the data set
+# Reference: https://www.w3resource.com/python-exercises/pandas/movies/python-pandas-movies-exercise-9.php
+print(data.head())
+
+
+
 print ('\n' * 3)
 print ('\t\t********** Summary Statistics **********')
 print ('\n')

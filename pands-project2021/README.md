@@ -101,10 +101,13 @@ box plots, scatter plots and histograms for example) and other visualisation
 techniques we attempt to investigate the data to understand patterns, detect
 outliers and find interesting relationships amongst the variables [8].
 
+## Loading the Iris Data Set
+
 The first part of analysis in both Minitab and Python is to load the data to be
-analysed into the software. Minitab provides a GUI to browse for a file to open.
-In Python we can read a comma-separated file into a Dataframe named ‘data’ using
-only a single line of code and the built in functionality of the pandas library:
+analysed into the software. Minitab provides a GUI to browse for a file to open
+via Windows File Explorer. In Python we can read a comma-separated file into a
+Dataframe named ‘data’ using only a single line of code and the built-in
+functionality of the pandas library:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 data = pd.read_csv('iris.csv')
@@ -116,6 +119,29 @@ column of the Dataset:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 data.columns = ['sepal length', 'sepal width', 'petal length', 'petal width', 'species']
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Finally we can review the top 5 rows of the data set to ensure that our column
+headers are in the correct place when compared with the original CSV file using
+the line:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+print(data.head())
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The output from this command is displayed on the terminal:
+
+![](media/2fe767d238caaaa8253598793347329c.png)
+
+We can compare this with the CSV file and see that they are identical except for
+the column headers which we changed.
+
+| sepal_length | sepal_width | petal_length | petal_width | species |
+|--------------|-------------|--------------|-------------|---------|
+| 5.1          | 3.5         | 1.4          | 0.2         | setosa  |
+| 4.9          | 3           | 1.4          | 0.2         | setosa  |
+| 4.7          | 3.2         | 1.3          | 0.2         | setosa  |
+| 4.6          | 3.1         | 1.5          | 0.2         | setosa  |
+| 5            | 3.6         | 1.4          | 0.2         | setosa  |
 
 [1] Minitab (2021) *Single User Annual Subscription License.* Available at:
 <https://store.minitab.com/781/purl-minitab> Accessed (04 April 2021)
