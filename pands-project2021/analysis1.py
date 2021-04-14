@@ -1,7 +1,7 @@
 # GMIT Programming and Scripting Project 2021
 # Author: Sam Tracey
 
-# Exploratory Data Analysis
+# Import the necessary libraries
 from contextlib import redirect_stdout
 import numpy as np
 import pandas as pd
@@ -17,10 +17,14 @@ from sklearn.linear_model import LinearRegression
 
 # First step is to read the iris.csv file in as a dataframe called data.
 # we then assign column headers for aesthetics.
+# Finally we display the summary statistics to the screen
 data = pd.read_csv('iris.csv')
 data.columns = ['sepal length', 'sepal width', 'petal length', 'petal width', 'species']
-#print (data.describe())
-# print(data)
+print ('\n' * 3)
+print ('\t\t********** Summary Statistics **********')
+print ('\n')
+print (data.describe())
+
 
 # reference: https://realpython.com/python-data-cleaning-numpy-pandas/
 print('Check Each Columns to Ensure no Missing Data\n')
