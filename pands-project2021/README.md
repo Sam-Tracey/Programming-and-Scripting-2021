@@ -143,6 +143,80 @@ the column headers which we changed.
 | 4.6          | 3.1         | 1.5          | 0.2         | setosa  |
 | 5            | 3.6         | 1.4          | 0.2         | setosa  |
 
+## Descriptive Statistics
+
+Calculating descriptive statistics is often the first step in data analysis one
+a data set has been loaded. Descriptive statistics are values that characterise
+features of specific data presented in table or graph form. [9]
+
+Minitab provides a mean option for descriptive statistics which presents the
+user with the following summary table:
+
+![Table 1. Minitab Descriptive Statistics for Iris Data Set.
+](media/13a77d66c11b4dbb5e39d48f194a8ea7.png)
+
+**Table 1. Minitab’s Descriptive Statistics Table For The Iris Data Set.**
+
+In Python we can also generate a table of descriptive statistics using a few
+lines of code [10]:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+print ('\t\t********** Summary Statistics **********')
+print ('\n')
+print (data.describe())
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This code prints the following information on screen:
+
+![](media/84d83f571e725abb26ccd78eb856dc88.png)
+
+**Table 2. Python Descriptive Statistics Table for The Iris Data Set.**
+
+Comparing tables 1 and 2 we can see that both Minitab and Python detail the
+mean, standard deviation, minimum, maximum and quantile information. The one
+piece of information that is provided by Minitab but not Python is the number of
+entries with missing data. This can be output in Python with another few lines
+of code [11]:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+print('Check Each Column to Ensure no Missing Data\n')
+print(data.isnull().sum())
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+![](media/ae046068637c0721b71e3d9e8c272dea.png)
+
+**Table 3. Python Console Output Detailing The Number of Missing Data Points.**
+
+It is also possible to split the original Dataframe that we created in Python to
+provide descriptive statistics for the three species of Iris separately [12]:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+setosa = data.loc[data.species== 'setosa',:]
+dfi.export(setosa.describe(), 'table_2.png')
+versicolor = data.loc[data.species== 'versicolor',:]
+dfi.export(versicolor.describe(), 'table_3.png')
+virginica = data.loc[data.species== 'virginica',:]
+dfi.export(virginica.describe(), 'table_4.png')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+I have used the dfi.export function in this case to export the three separate
+descriptive statistics tables as .png files to the project folder. [13]
+
+![Table Description automatically
+generated](media/128c0fe1b01037a4a3fd8f197636a7da.png)
+
+**Table 4. Descriptive Statistics for Setosa Species**
+
+![Table Description automatically
+generated](media/b9d24ce49cc2e719c1a07b5f039e57d0.png)
+
+**Table 5. Descriptive Statistics for Versicolor Species**
+
+![Table Description automatically
+generated](media/d1c99c09037f58fa075ecef6d7554463.png)
+
+**Table 6. Descriptive Statistics for Virginica Species**
+
 [1] Minitab (2021) *Single User Annual Subscription License.* Available at:
 <https://store.minitab.com/781/purl-minitab> Accessed (04 April 2021)
 
@@ -170,3 +244,25 @@ Accessed (07 April 2021)
 [8] IBM (2020) *Exploratory Data Analysis*. Available at:
 [https://www.ibm.com/cloud/learn/exploratory-data-analysis\#toc-what-is-ex-ofRUduQ6](https://www.ibm.com/cloud/learn/exploratory-data-analysis#toc-what-is-ex-ofRUduQ6)
 Accessed (14 April 2021)
+
+[9] Larson, M. G. (2006) ‘Descriptive Statistics and Graphical Displays’,
+*Circulation*, 114(1), pp. 76–81. doi:
+[10.1161/CIRCULATIONAHA.105.584474](https://doi.org/10.1161/CIRCULATIONAHA.105.584474).
+
+[10] Pandas, 2021 pandas.DataFrame.describe. Available at:
+https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html
+Accessed (02 April 2021)
+
+[11] Real Python (2018) Pythonic Data Cleaning With Pandas and NumPy. Available
+at: <https://realpython.com/python-data-cleaning-numpy-pandas/> Accessed (02
+April 2021)
+
+[12] Pandas (2021) Cookbook. Available at:
+[https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html Accessed
+(03](https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html%20Accessed%20(03)
+April 2021)
+
+[13] Stack Overflow (2016) How to save a pandas DataFrame table as a png.
+Available at:
+[https://stackoverflow.com/questions/35634238/how-to-save-a-pandas-dataframe-table-as-a-png/63387275\#63387275](https://stackoverflow.com/questions/35634238/how-to-save-a-pandas-dataframe-table-as-a-png/63387275#63387275)
+Accessed (02 April 2021)

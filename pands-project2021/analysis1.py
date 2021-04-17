@@ -34,7 +34,7 @@ print (data.describe())
 
 
 # reference: https://realpython.com/python-data-cleaning-numpy-pandas/
-print('Check Each Columns to Ensure no Missing Data\n')
+print('Check Each Column to Ensure no Missing Data\n')
 print(data.isnull().sum())
 
 
