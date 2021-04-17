@@ -195,8 +195,8 @@ with the following summary table:
 generated](media/13a77d66c11b4dbb5e39d48f194a8ea7.png)
 
 **Table 1. Minitab’s Descriptive Statistics Table For The Iris Data Set.**
-&nbsp;
-&nbsp;
+<br />
+<br />
 
 In Python we can also generate a table of descriptive statistics using a few
 lines of code [10]:
