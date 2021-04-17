@@ -370,6 +370,9 @@ bars. This generates density plots as shown below:
 generated](media/4ce96fc1c020990e2759d49059fe4fee.png)
 
 **Figure 4. Density plots of the Iris Data Set variables using Minitab.**
+<br />
+<br />
+<br />
 
 Once again, using the Seaborn module we can replicate this output in Python.
 Using the same for loop concept as described in the boxplot section we can
@@ -393,6 +396,9 @@ The plots below are output:
 automatically generated](media/0867537fd758ec2ba198303e4af52403.png)
 
 **Figure 5. Density plots of the Iris Data Set variables using Python.**
+<br />
+<br />
+<br />
 
 You will notice that there are distinct differences between the output of the
 density plots generated in Python compared to those from Minitab. Where Minitab
@@ -466,6 +472,9 @@ print('\nFor Versicolor Species:\n')
 ![](media/4d607976fbd857585633347dcb63d3e7.png)
 
 **Figure 7. Console output for normality testing from Python script.**
+<br />
+<br />
+<br />
 
 From the output we can see that the petal width data for the Setosa species of
 Iris does not follow a normal distribution so we can further investigate this in
@@ -482,6 +491,9 @@ plt.close()
 generated](media/ac58d8ccb7f01dfc28473460c9ca611f.png)
 
 **Figure 8. Distribution plot for petal width of Setosa species.**
+<br />
+<br />
+<br />
 
 ## Correlation and Regression
 
@@ -502,6 +514,9 @@ the other variables and colouring by species:
 generated](media/693560d74e568d11a723f380f96109aa.png)
 
 **Figure 9. Minitab Matrix Plot for all Iris Variables.**
+<br />
+<br />
+<br />
 
 The Seaborn module has a fabulous function called the pairplot which generates a
 similar, but in my opinion, superior graph using one line of code!
@@ -515,6 +530,9 @@ plt.close()
 ![](media/9c32ade9768acb3b7410530a317d5cf5.png)
 
 **Figure 10. Seaborn Pair Plot for each Iris variable.**
+<br />
+<br />
+<br />
 
 From this output we can see what appears to be a very good correlation between
 petal length and petal width. There also seems to be some correlation between
@@ -531,6 +549,9 @@ dfi.export(data.corr(method = 'pearson'), 'table_5.png')
 generated](media/a8dcecb65b8cf8d40e7e97c9808bb996.png)
 
 **Figure 11. Pearson pairwise correlation values for the Iris Data Set.**
+<br />
+<br />
+<br />
 
 Scatter plots in Minitab are often used to visualise potential regressions. The
 output below is evaluating petal length versus petal width and sepal length
@@ -560,6 +581,12 @@ plt.close()
 generated](media/ccda5b11e0d8ff6a03b5cc8902e9d3c8.png)
 
 **Figure 13. Seaborn lmplot output by script.**
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
 # Linear Regression Modelling
 
@@ -586,6 +613,9 @@ independent variable:
 confidence](media/5cc572640925c54dcf0c7defb99e5217.png)
 
 **Figure 14.Minitab Linear Regression model for petal length and petal width.**
+<br />
+<br />
+<br />
 
 In this output we observe the regression equation that we can use for
 prediction, the model summary which tells us how well the model fits the data an
@@ -636,11 +666,17 @@ with open('sepal_model_summary.txt', 'w') as f:     # redirecting the
 
 **Figure 15. Summary for Petal length and width linear regression model from
 Python**
+<br />
+<br />
+<br />
 
 **![](media/8b03f34e1bcc66f24f2f62078e3e1b39.png)**
 
 **Figure 16. Summary for Sepal length and width linear regression model from
 Python**
+<br />
+<br />
+<br />
 
 While the model summaries produced are detailed and contain all the important
 information required to ascertain the quality of the models, they do not display
