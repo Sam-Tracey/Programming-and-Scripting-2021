@@ -82,6 +82,7 @@ plt.close()
 
 
 # KDE plots using for loop
+# reference: https://seaborn.pydata.org/tutorial/distributions.html
 for column in data.columns[:4]:  # Loop over all columns except 'Species'
     sns.set()
     fig, ax = plt.subplots()  

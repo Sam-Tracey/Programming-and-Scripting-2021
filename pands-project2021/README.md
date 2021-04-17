@@ -288,6 +288,56 @@ generated](media/f31626fb9919332ba3dd78282b21cb1c.png)
 
 **Figure 3. Box plots of the Iris Data Set variables using Python.**
 
+### Density Plots
+
+A density plot represents the distribution of a numeric variable. It is
+essentially a smoothed version of the histogram plot. [16] We use density plots
+to investigate the distribution of the underlying data and is typically one of
+the first tasks we would undertake when performing analysis of any data set.
+
+Using Minitab we can create a histogram graph for each variable in the Irish
+Data set, plot a distribution line of the data and then remove the histogram
+bars. This generates density plots as shown below:
+
+![Chart, line chart, histogram Description automatically
+generated](media/4ce96fc1c020990e2759d49059fe4fee.png)
+
+**Figure 4. Density plots of the Iris Data Set variables using Minitab.**
+
+Once again, using the Seaborn library we can replicate this output in Python.
+Using the same for loop concept as described in the boxplot section we can
+iterate over each of the columns in our DataFrame, create the four density plots
+and save the output of the four separate plots to our folder [17]:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+for column in data.columns[:4]:  # Loop over all columns except 'Species'
+    sns.set()
+    fig, ax = plt.subplots()  
+    sns.kdeplot(data=data, x=column, hue='species')    
+    plt.title('Kernal Density Estimation (KDE) Plot of {}'.format(column), fontsize=20)
+    fig.set_size_inches(8, 8)
+    plt.savefig('KDE_of_{}.png'.format(column), dpi=300)  # filename based on column name in Iris Data set
+plt.close('all')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The plots below are output:
+
+![Graphical user interface, chart, line chart, histogram Description
+automatically generated](media/0867537fd758ec2ba198303e4af52403.png)
+
+**Figure 5. Density plots of the Iris Data Set variables using Python.**
+
+You will notice that there are distinct differences between the output of the
+density plots generated in Python compared to those from Minitab. Where Minitab
+only allows you to display a normal distribution over for each variable the
+Seaborn library in Python uses Kernal Density Estimation (KDE) and, while beyond
+the scope of this paper, kernel density estimates converge faster to the true
+underlying density for continuous random variables such as those in the Iris
+data set. [18]
+
+The output from the Seaborn KDE graphs is a better depiction of the true density
+distributions for our data set.
+
 [1] Minitab (2021) *Single User Annual Subscription License.* Available at:
 <https://store.minitab.com/781/purl-minitab> Accessed (04 April 2021)
 
@@ -347,3 +397,17 @@ Accessed (02 April 2021)
 Data Science Stack Exchange (no date). Available at:
 <https://datascience.stackexchange.com/questions/84840/how-to-create-multiple-subplots-scatterplot-in-for-loop>
 (Accessed: 3 April 2021).
+
+[16] From Data to Viz. Density. Available at:
+[https://www.data-to-viz.com/graph/density.html\#definition](https://www.data-to-viz.com/graph/density.html#definition)
+Accessed (17 April 2021).
+
+[17] Seaborn (Unknown) Visualizing distributions of data. Available at:
+[https://seaborn.pydata.org/tutorial/distributions.html Accessed
+(07](https://seaborn.pydata.org/tutorial/distributions.html%20Accessed%20(07)
+April 2021)
+
+[18] Wikipedia (2021) Kernal Density Estimation. Available at:
+[https://en.wikipedia.org/wiki/Kernel_density_estimation Accessed
+(17](https://en.wikipedia.org/wiki/Kernel_density_estimation%20Accessed%20(17)
+April 2021)
