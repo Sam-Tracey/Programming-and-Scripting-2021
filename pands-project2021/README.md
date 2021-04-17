@@ -14,7 +14,7 @@ This repository has been created to document my project work for the 2021
 Programming and scripting module as part of a Higher Diploma in Data Analytics
 with Galway and Mayo Institute of Technology.
 
-Currently in my place of employment, Minitab 18 is used extensively for all data
+Currently in my place of employment, Minitab 19 is used extensively for all data
 analysis at a cost of €1709.70 per license [1]. This project concerns the
 well-known Fisher’s Iris data set [2] and how it can be analysed using
 exploratory data analysis and regression analysis with the Python programming
@@ -34,7 +34,7 @@ The Iris data set was first developed by British statistician Ronald Fisher in
 three related species of Iris flower: The Iris Setosa, Iris Virginica and Iris
 Versicolor [4]. The data set has gained huge popularity in the programming and
 machine learning communities with University of California Irvine going as far
-as to claim it is the “best know database to be found in pattern recognition
+as to claim it is the “best known database to be found in pattern recognition
 literature” [5]
 
 The data set itself is small but not trivial. Containing 150 unique observations
@@ -43,8 +43,8 @@ four distinct attributes detailed: Petal length, petal width, sepal length and
 sepal width.
 
 The popularity of the data set can be easily seen with a quick Google search. As
-of writing there are current 42,600 entries on GitHub concerning the Iris data
-set and a further 3836 entries on Kaggle.
+of the time of writing there are currently 42,600 entries on GitHub concerning
+the Iris data set and a further 3836 entries on Kaggle.
 
 Interestingly on both the UCI website where the data set is free to download and
 on the Iris Data set Wikipedia page there is a reference to two mistakes that
@@ -89,7 +89,7 @@ The following software, modules and files were used throughout this project:
     <https://archive.ics.uci.edu/ml/machine-learning-databases/iris/>
 
 The purpose of this project is to compare the ability of Python and my company’s
-current analytical software, Minitab 18, to carry out exploratory data analysis
+current analytical software, Minitab 19, to carry out exploratory data analysis
 and linear regression modelling on a data set. I will be treating the Iris data
 set as I would any other data set with which I am not overly familiar using both
 Minitab and Python.
@@ -97,7 +97,7 @@ Minitab and Python.
 While I will give some details on the statistical tools used, I will not be
 going into great detail on the techniques themselves. This goal of this project
 is to determine if Python could be used to replace our current software package
-to save money for the company.
+for everyday analysis.
 
 # Exploratory Data Analysis
 
@@ -195,6 +195,8 @@ with the following summary table:
 generated](media/13a77d66c11b4dbb5e39d48f194a8ea7.png)
 
 **Table 1. Minitab’s Descriptive Statistics Table For The Iris Data Set.**
+&nbsp;
+&nbsp;
 
 In Python we can also generate a table of descriptive statistics using a few
 lines of code [10]:
