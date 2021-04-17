@@ -26,7 +26,7 @@ data.columns = ['sepal length', 'sepal width', 'petal length', 'petal width', 's
 print(data.head())
 
 
-
+# reference: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html
 print ('\n' * 3)
 print ('\t\t********** Summary Statistics **********')
 print ('\n')
@@ -44,6 +44,7 @@ print(data.isnull().sum())
 dfi.export(data.describe(), 'table_1.png')
 
 # Splitting the data set by species of flower and describing the data for each group individually then saving to folder as png.
+# reference: https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html
 setosa = data.loc[data.species== 'setosa',:]
 dfi.export(setosa.describe(), 'table_2.png')
 versicolor = data.loc[data.species== 'versicolor',:]
@@ -63,15 +64,15 @@ for column in data.columns[:4]:  # Loop over all columns except 'Species'
     sns.set(style='ticks')
     sns.boxplot(x='species',
             y=column,                                       # column is chosen from iris data set based on loop iteration
-            data=data, 
-            order=['versicolor', 'virginica', 'setosa'],
-            showmeans = True, 
-            meanprops={'marker':'o',
+            data=data,                                      # Specify data to be used (data dataFrame)
+            order=['setosa', 'versicolor', 'virginica'],
+            showmeans = True,                               # Show a mean marker on the boxplot
+            meanprops={'marker':'o',                        # Modify the mean marker attributes to make it stand out.
                        'markerfacecolor':'white', 
                        'markeredgecolor':'black',
                        'markersize':'10'})
 
-    # sns.boxplot(x='species', y=column, data=data)  # column is chosen here
+    # Format the box plots (remove spines from top and bottom, add titles, specify font size of title, specify size of plot and save to folder)
     sns.despine(offset=10, trim=True)
     plt.title('Box Plot of {}'.format(column), fontsize=20)
     fig.set_size_inches(8, 8)

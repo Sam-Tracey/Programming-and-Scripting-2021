@@ -145,12 +145,12 @@ the column headers which we changed.
 
 ## Descriptive Statistics
 
-Calculating descriptive statistics is often the first step in data analysis one
+Calculating descriptive statistics is often the first step in data analysis once
 a data set has been loaded. Descriptive statistics are values that characterise
 features of specific data presented in table or graph form. [9]
 
-Minitab provides a mean option for descriptive statistics which presents the
-user with the following summary table:
+Minitab provides an option for descriptive statistics which presents the user
+with the following summary table:
 
 ![Table 1. Minitab Descriptive Statistics for Iris Data Set.
 ](media/13a77d66c11b4dbb5e39d48f194a8ea7.png)
@@ -217,6 +217,77 @@ generated](media/d1c99c09037f58fa075ecef6d7554463.png)
 
 **Table 6. Descriptive Statistics for Virginica Species**
 
+## Graphical Displays
+
+We use graphical displays as they complement tabular data that we obtain from
+descriptive statistics. Graphs are often easier to interpret and better suited
+to identifying patterns in the underlying data set than tables. We are going to
+further analyse the Iris data set using Box Plots, scatter plots, distribution
+plots (KDE) and pair plots using both Minitab and Python.
+
+### Boxplots
+
+Also known as box and whisker plots, the boxplot displays values of the
+quantiles using a rectangular box. The top and bottom ends of the box illustrate
+quantiles one and three while the line drawn across the middle of the box
+depicts the median or quantile two. The lines extending outwards from the
+rectangular box are known as the whiskers. These whiskers represent the ranges
+for the bottom 25% and top 25% of data. If there are any outliers in the data
+these will be represented by asterisks.
+
+![box plot](media/249484119e9c58d1c989891bfb2ee52a.png)
+
+**Figure 1. Anatomy of the box plot [14].**
+
+Using Minitab we can create boxplots for all the variables (sepal length, sepal
+width, petal length and petal width) then colour each of the variables by an
+attribute – in this case we’ve coloured by species. We can also add a mean
+symbol to each box plot.
+
+![Chart, box and whisker chart Description automatically
+generated](media/51258535d4d903bf3332907681f9334b.png)
+
+**Figure 2. Box plots of the Iris Data Set variables using Minitab.**
+
+To replicate this output in Python we make use of the Seaborn library to create
+the box plots. Initially I had separate lines of code to display each box plot
+separately but was able to research a method to use a for loop to iterate
+through each of the columns in a DataFrame plotting a box plot for each one and
+saving these plots to a folder as .png files.[15]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sns.set(style='darkgrid')
+
+ column in data.columns[:4]:  
+    sns.set()
+    fig, ax = plt.subplots()
+    sns.set(style='ticks')
+    sns.boxplot(x='species',
+            y=column,                                       
+            data=data,                                      
+            order=['versicolor', 'virginica', 'setosa'],
+            showmeans = True,                               
+            meanprops={'marker':'o',                        
+                       'markerfacecolor':'white', 
+                       'markeredgecolor':'black',
+                       'markersize':'10'})
+
+    
+    sns.despine(offset=10, trim=True)
+    plt.title('Box Plot of {}'.format(column), fontsize=20)
+    fig.set_size_inches(8, 8)
+    plt.savefig('Boxplot_of_{}.png'.format(column), dpi=300)  
+plt.close()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This block of code produces four separate boxplots which are saved to a folder.
+The boxplots produced are displayed below:
+
+![Chart, box and whisker chart Description automatically
+generated](media/f31626fb9919332ba3dd78282b21cb1c.png)
+
+**Figure 3. Box plots of the Iris Data Set variables using Python.**
+
 [1] Minitab (2021) *Single User Annual Subscription License.* Available at:
 <https://store.minitab.com/781/purl-minitab> Accessed (04 April 2021)
 
@@ -266,3 +337,13 @@ April 2021)
 Available at:
 [https://stackoverflow.com/questions/35634238/how-to-save-a-pandas-dataframe-table-as-a-png/63387275\#63387275](https://stackoverflow.com/questions/35634238/how-to-save-a-pandas-dataframe-table-as-a-png/63387275#63387275)
 Accessed (02 April 2021)
+
+[14] The Data Visualization Catalog (2021). Box and Whisker Plot. Available at:
+[https://datavizcatalogue.com/methods/box_plot.html Accessed
+(17](https://datavizcatalogue.com/methods/box_plot.html%20Accessed%20(17) April
+2021)
+
+[15] Visualization - how to create multiple subplots( scatterplot) in for loop -
+Data Science Stack Exchange (no date). Available at:
+<https://datascience.stackexchange.com/questions/84840/how-to-create-multiple-subplots-scatterplot-in-for-loop>
+(Accessed: 3 April 2021).
