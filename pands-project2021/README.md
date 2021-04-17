@@ -212,6 +212,9 @@ This code prints the following information on screen:
 ![](media/84d83f571e725abb26ccd78eb856dc88.png)
 
 **Table 2. Python Descriptive Statistics Table for The Iris Data Set.**
+<br />
+<br />
+<br />
 
 Comparing tables 1 and 2 we can see that both Minitab and Python detail the
 mean, standard deviation, minimum, maximum and quantile information. The one
@@ -227,6 +230,10 @@ print(data.isnull().sum())
 ![](media/ae046068637c0721b71e3d9e8c272dea.png)
 
 **Table 3. Python Console Output Detailing The Number of Missing Data Points.**
+<br />
+<br />
+<br />
+
 
 It is also possible to split the original Dataframe that we created in Python to
 provide descriptive statistics for the three species of Iris separately [12]:
@@ -247,16 +254,25 @@ descriptive statistics tables as .png files to the project folder. [13]
 generated](media/128c0fe1b01037a4a3fd8f197636a7da.png)
 
 **Table 4. Descriptive Statistics for Setosa Species**
+<br />
+<br />
+<br />
 
 ![Table Description automatically
 generated](media/b9d24ce49cc2e719c1a07b5f039e57d0.png)
 
 **Table 5. Descriptive Statistics for Versicolor Species**
+<br />
+<br />
+<br />
 
 ![Table Description automatically
 generated](media/d1c99c09037f58fa075ecef6d7554463.png)
 
 **Table 6. Descriptive Statistics for Virginica Species**
+<br />
+<br />
+<br />
 
 ## Graphical Displays
 
@@ -279,6 +295,9 @@ these will be represented by asterisks.
 ![box plot](media/249484119e9c58d1c989891bfb2ee52a.png)
 
 **Figure 1. Anatomy of the box plot [14].**
+<br />
+<br />
+<br />
 
 Using Minitab we can create boxplots for all the variables (sepal length, sepal
 width, petal length and petal width) then colour each of the variables by an
@@ -290,6 +309,9 @@ us an indication of any skewness that may exist in the data.
 generated](media/51258535d4d903bf3332907681f9334b.png)
 
 **Figure 2. Box plots of the Iris Data Set variables using Minitab.**
+<br />
+<br />
+<br />
 
 To replicate this output in Python we make use of the Seaborn module to create
 the box plots. Initially I had separate lines of code to display a box plot for
@@ -329,6 +351,9 @@ The boxplots produced are displayed below:
 generated](media/f31626fb9919332ba3dd78282b21cb1c.png)
 
 **Figure 3. Box plots of the Iris Data Set variables using Python.**
+<br />
+<br />
+<br />
 
 ### Density Plots
 
