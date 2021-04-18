@@ -3,8 +3,8 @@
 Dep. Variable:            petal width   R-squared:                       0.927
 Model:                            OLS   Adj. R-squared:                  0.927
 Method:                 Least Squares   F-statistic:                     1882.
-Date:                Sat, 17 Apr 2021   Prob (F-statistic):           4.68e-86
-Time:                        15:42:42   Log-Likelihood:                 24.796
+Date:                Sun, 18 Apr 2021   Prob (F-statistic):           4.68e-86
+Time:                        13:32:27   Log-Likelihood:                 24.796
 No. Observations:                 150   AIC:                            -45.59
 Df Residuals:                     148   BIC:                            -39.57
 Df Model:                           1                                         

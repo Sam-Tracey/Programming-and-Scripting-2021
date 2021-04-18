@@ -60,7 +60,7 @@ sns.set(style='darkgrid')
 
 for column in data.columns[:4]:  # Loop over all columns except 'Species'
     sns.set()
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots()                                # create a figure and set of sub plots (standardise layout)
     sns.set(style='ticks')
     sns.boxplot(x='species',
             y=column,                                       # column is chosen from iris data set based on loop iteration
@@ -85,8 +85,8 @@ plt.close()
 # reference: https://seaborn.pydata.org/tutorial/distributions.html
 for column in data.columns[:4]:  # Loop over all columns except 'Species'
     sns.set()
-    fig, ax = plt.subplots()  
-    sns.kdeplot(data=data, x=column, hue='species')    
+    fig, ax = plt.subplots()                              # create a figure and set of sub plots (standardise layout)
+    sns.kdeplot(data=data, x=column, hue='species')       # define the data for the KDE plot and specify the attribute (species)
     plt.title('Kernal Density Estimation (KDE) Plot of {}'.format(column), fontsize=20)
     fig.set_size_inches(8, 8)
     plt.savefig('KDE_of_{}.png'.format(column), dpi=300)  # filename based on column name in Iris Data set
@@ -96,10 +96,11 @@ plt.close('all')                                          # Since this block cre
 
 # Normality testing each individual species - reference saved for D'Agostino's K2 Test for normality
 # reference: https://machinelearningmastery.com/a-gentle-introduction-to-normality-tests-in-python/
+
 print('\nFor Setosa Species:\n')
-for param in ['sepal length', 'sepal width', 'petal length', 'petal width']:
-    z, pval = stats.normaltest(setosa[param])
-    if(pval < 0.05):
+for param in ['sepal length', 'sepal width', 'petal length', 'petal width']:        # For loop to iterate through each column of the Setosa DataFrame
+    z, pval = stats.normaltest(setosa[param])                                       # Use Scipy's normaltest to return a tuple containing the z-score and p-value.
+    if(pval < 0.05):                                                                # Test for normality (< 0.05 is not normal)
         print('%s has a p-value of %f - distribution is not normal' % (param, pval))
     else:
         print('%s has a p-value of %f' % (param, pval))
