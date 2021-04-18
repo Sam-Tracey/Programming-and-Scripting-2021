@@ -495,81 +495,175 @@ generated](media/ccda5b11e0d8ff6a03b5cc8902e9d3c8.png)
 
 **Figure 13. Seaborn lmplot output by script.**
 
-[1] Minitab (2021) *Single User Annual Subscription License.* Available at:
+# Linear Regression Modelling
+
+While the simple regression plots and correlation values presented in the
+previous section allow us to visualise whether or not there is a relationship
+between variables, they are of limited use if we want to predict values of one
+variable based on another variable.
+
+Linear regression modelling is a commonly used predictive modelling technique.
+The linear regression is represented by an equation: 𝑌 = 𝑎 + 𝑏𝑋 + 𝑒 where a is
+the intercept, b is the slope of the line and e is the error term. We can use
+this equation to predict the value of a dependent variable based on a predictor
+variable.
+
+Using Minitab Linear Regression Modelling is a relatively straight forward
+process. You simply select regression then linear regression from the menu,
+assign your dependent variable and independent variable and press OK.
+
+The output below is from a Minitab Linear Regression Model where Petal length
+was assigned as the dependent variable and petal width was assigned as the
+independent variable:
+
+![Text Description automatically generated with medium
+confidence](media/5cc572640925c54dcf0c7defb99e5217.png)
+
+**Figure 14.Minitab Linear Regression model for petal length and petal width.**
+
+In this output we observe the regression equation that we can use for
+prediction, the model summary which tells us how well the model fits the data an
+ANOVA table describing the sources of variance and finally a table listing any
+unusual observations that may warrant further investigation.
+
+I found the easiest way to create a linear regression model in Python was to use
+the Statsmodels library. I had researched and experimented with scikit-learn’s
+LinearRegression function but found that it was more complex than statsmodels’
+OLS function and also did not provide as much information on the model itself.
+
+The following code block creates two linear regression models using the ordinary
+least squared methodology. The first model examines the regression between petal
+length and petal width. The second model examines the regression between sepal
+length and sepal width. [26]
+
+For both models I was able to output a summary and, using the redirect_stdout(f)
+command I saved the output from the model summaries as a .txt file in a folder.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+X = data['petal width']                             # define the x axis data for ordinary least squared (OLS) regression)
+y = data['petal length']                            # define the y axis data for ordinary least squared (OLS) regression)
+X2 = sm.add_constant(X)                             # add a column of 1s so that model has an intercept
+model = sm.OLS(y, X2)                               # Describe OLS regression model (Linear regression)
+results = model.fit()                               # Fit the OLS regression model
+print('Parameters: ', results.params)               # return the values for the regression equation
+
+# reference : https://docs.python.org/3/library/contextlib.html#contextlib.redirect_stdout
+with open('petal_model_summary.txt', 'w') as f:     # redirecting the output of the model summary to a txt file
+    with redirect_stdout(f):
+        print(results.summary())
+
+X = data['sepal width']                             # define the x axis data for ordinary least squared (OLS) regression)                          
+y = data['sepal length']                            # define the y axis data for ordinary least squared (OLS) regression)
+X2 = sm.add_constant(X)                             # add a column of 1s so that model has an intercept
+model = sm.OLS(y, X2)                               # Describe OLS regression model (Linear regression)
+results = model.fit()                               # Fit the OLS regression model
+print('Parameters: ', results.params)               # return the values for the regression equation
+
+with open('sepal_model_summary.txt', 'w') as f:     # redirecting the output of the model summary to a txt file
+    with redirect_stdout(f):
+        print(results.summary())
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+![](media/c9486815bae6bd68b2b3c70263feaae1.png)
+
+**Figure 15. Summary for Petal length and width linear regression model from
+Python**
+
+**![](media/8b03f34e1bcc66f24f2f62078e3e1b39.png)**
+
+**Figure 16. Summary for Sepal length and width linear regression model from
+Python**
+
+While the model summaries produced are detailed and contain all the important
+information required to ascertain the quality of the models, they do not display
+the linear regression equation.
+
+To remedy this I added a single line of code which displays the model parameters
+on the console:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+print('Model Parameters: ', results.params)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+![](media/71d9c60ea93b1fe291864a20c6fbf5b0.png)
+
+From this we can now formulate the linear regression equation: petal length =
+1.083558 + 2.229940 \* petal width. This is an exact match with the equation
+produced by Minitab.
+
+[1] *Minitab (2021)* *Single User Annual Subscription License.* Available at:
 <https://store.minitab.com/781/purl-minitab> Accessed (04 April 2021)
 
-[2] University of California Irvine (2021) *Iris* *Data Set* Available at:
+[2] *University of California Irvine (2021)* *Iris* *Data Set* Available at:
 (<https://archive.ics.uci.edu/ml/datasets/iris> Accessed (04 April 2021)
 
-[3] Python (2021) *History and License* Available at:
+[3] *Python (2021)* *History and License* Available at:
 <https://docs.python.org/3/license.html> Accessed (04 April 2021)
 
-[4] Wikipedia (2021) *Iris Flower Data Set* Available at:
+[4] *Wikipedia (2021) Iris Flower Data Set* Available at:
 <https://en.wikipedia.org/wiki/Iris_flower_data_set> Accessed (13-April-2021)
 
-[5] University of California Irvine (2021) *Iris Data Set* Available at:
+[5] *University of California Irvine (2021) Iris Data Set* Available at:
 (<https://archive.ics.uci.edu/ml/datasets/iris> Accessed (13 April 2021)
 
-[6] Fisher,R.A. "The use of multiple measurements in taxonomic problems" Annual
-Eugenics, 7, Part II, 179-188 (1936); also in "Contributions to Mathematical
+[6] *Fisher,R.A. "The use of multiple measurements in taxonomic problems" Annual
+Eugenics, 7, Part II, 179-188 (1936);* also in "Contributions to Mathematical
 Statistics" (John Wiley, NY, 1950) Available at:
 https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1469-1809.1936.tb02137.x
 Accessed (07 April 2021)
 
-[7] Morgenthaler, S. (2009), Exploratory data analysis. WIREs Comp Stat, 1:
+[7] *Morgenthaler, S. (2009), Exploratory data analysis.* WIREs Comp Stat, 1:
 33-44. Available at: <https://doi.org/10.1002/wics.2> Accessed (14 April 2021)
 
-[8] IBM (2020) *Exploratory Data Analysis*. Available at:
+[8] *IBM (2020)* *Exploratory Data Analysis*. Available at:
 [https://www.ibm.com/cloud/learn/exploratory-data-analysis\#toc-what-is-ex-ofRUduQ6](https://www.ibm.com/cloud/learn/exploratory-data-analysis#toc-what-is-ex-ofRUduQ6)
 Accessed (14 April 2021)
 
-[9] Larson, M. G. (2006) ‘Descriptive Statistics and Graphical Displays’,
+[9] *Larson, M. G. (2006) ‘Descriptive Statistics and Graphical Displays’*,
 *Circulation*, 114(1), pp. 76–81. doi:
 [10.1161/CIRCULATIONAHA.105.584474](https://doi.org/10.1161/CIRCULATIONAHA.105.584474).
 
-[10] Pandas, 2021 pandas.DataFrame.describe. Available at:
+[10] *Pandas, 2021 pandas.DataFrame.describe*. Available at:
 https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html
 Accessed (02 April 2021)
 
-[11] Real Python (2018) Pythonic Data Cleaning With Pandas and NumPy. Available
-at: <https://realpython.com/python-data-cleaning-numpy-pandas/> Accessed (02
-April 2021)
+[11] *Real Python (2018) Pythonic Data Cleaning With Pandas and NumPy.*
+Available at: <https://realpython.com/python-data-cleaning-numpy-pandas/>
+Accessed (02 April 2021)
 
-[12] Pandas (2021) Cookbook. Available at:
+[12] *Pandas (2021) Cookbook.* Available at:
 [https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html Accessed
 (03](https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html%20Accessed%20(03)
 April 2021)
 
-[13] Stack Overflow (2016) How to save a pandas DataFrame table as a png.
+[13] *Stack Overflow (2016) How to save a pandas DataFrame table as a png.*
 Available at:
 [https://stackoverflow.com/questions/35634238/how-to-save-a-pandas-dataframe-table-as-a-png/63387275\#63387275](https://stackoverflow.com/questions/35634238/how-to-save-a-pandas-dataframe-table-as-a-png/63387275#63387275)
 Accessed (02 April 2021)
 
-[14] The Data Visualization Catalog (2021). Box and Whisker Plot. Available at:
-[https://datavizcatalogue.com/methods/box_plot.html Accessed
-(17](https://datavizcatalogue.com/methods/box_plot.html%20Accessed%20(17) April
-2021)
+[14] *The Data Visualization Catalog (2021). Box and Whisker Plot.* Available
+at: [https://datavizcatalogue.com/methods/box_plot.html Accessed (17 April 2021)
 
-[15] Visualization - how to create multiple subplots( scatterplot) in for loop -
-Data Science Stack Exchange (no date). Available at:
+[15] *Visualization - how to create multiple subplots( scatterplot) in for loop
+\- Data Science Stack Exchange* (no date). Available at:
 <https://datascience.stackexchange.com/questions/84840/how-to-create-multiple-subplots-scatterplot-in-for-loop>
 (Accessed: 3 April 2021).
 
-[16] From Data to Viz. Density. Available at:
+[16] *From Data to Viz. Density*. Available at:
 [https://www.data-to-viz.com/graph/density.html\#definition](https://www.data-to-viz.com/graph/density.html#definition)
 Accessed (17 April 2021).
 
-[17] Seaborn (Unknown) Visualizing distributions of data. Available at:
+[17] *Seaborn (Unknown) Visualizing distributions of data.* Available at:
 [https://seaborn.pydata.org/tutorial/distributions.html Accessed
 (07](https://seaborn.pydata.org/tutorial/distributions.html%20Accessed%20(07)
 April 2021)
 
-[18] Wikipedia (2021) Kernal Density Estimation. Available at:
+[18] *Wikipedia (2021) Kernal Density Estimation*. Available at:
 [https://en.wikipedia.org/wiki/Kernel_density_estimation Accessed (17 April
 2021)
 
-[19] Mishra, P. *et al.* (2019) ‘Descriptive statistics and normality tests for
-statistical data’, *Annals of Cardiac Anaesthesia*, 22(1), p. 67. doi:
+[19] *Mishra, P. et al. (2019) ‘Descriptive statistics and normality tests for
+statistical data’*, *Annals of Cardiac Anaesthesia*, 22(1), p. 67. doi:
 [10.4103/aca.ACA_157_18](https://doi.org/10.4103/aca.ACA_157_18).
 
 [20] *scipy.stats.normaltest — SciPy v1.6.2 Reference Guide* (no date).
@@ -582,7 +676,7 @@ at:
 <https://machinelearningmastery.com/a-gentle-introduction-to-normality-tests-in-python/>
 (Accessed: 18 April 2021).
 
-[22] Crawford, S. L. (2006) ‘Correlation and Regression’, *Circulation*,
+[22] *Crawford, S. L. (2006) ‘Correlation and Regression’*, *Circulation*,
 114(19), pp. 2083–2088. doi:
 [10.1161/CIRCULATIONAHA.105.586495](https://doi.org/10.1161/CIRCULATIONAHA.105.586495).
 
@@ -593,3 +687,12 @@ at: <https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html>
 [24] *seaborn.lmplot — seaborn 0.11.1 documentation* (no date). Available at:
 <https://seaborn.pydata.org/generated/seaborn.lmplot.html> (Accessed: 18 April
 2021).
+
+[25] *Predictive Modelling Using Linear Regression \| by RAJAT PANCHOTIA \| The
+Startup \| Medium* (no date). Available at:
+<https://medium.com/swlh/predictive-modelling-using-linear-regression-e0e399dc4745>
+(Accessed: 18 April 2021).
+
+[26] *Ordinary Least Squares — statsmodels* (no date). Available at:
+<https://www.statsmodels.org/devel/examples/notebooks/generated/ols.html>
+(Accessed: 18 April 2021).

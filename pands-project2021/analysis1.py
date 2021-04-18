@@ -154,48 +154,47 @@ plt.close()
 # Regression analysis. Reference: https://towardsdatascience.com/the-complete-guide-to-linear-regression-in-python-3d3f8f06bf8
 # Reference: https://realpython.com/linear-regression-in-python/
 
-x = data['petal width'].values.reshape(-1,1)                # Reshape both x and y data to create two dimensional arrays required for regression modeling
-y = data['petal length'].values.reshape(-1,1)
-x1 = data['sepal width'].values.reshape(-1,1)
-y1 = data['sepal length'].values.reshape(-1,1)
-
-
-
-reg_model = LinearRegression().fit (x,y)                   # Create an instance of the class LinearRegression representing the regression model and fit the model            
-# reg_model.fit (x,y)                                         
-predictions = reg_model.predict(x)                         # Obtain the predicted response for petal width and petal length
-reg_model1 = LinearRegression().fit (x1,y1)                # Create a second instance of the class LinearRegression representing the regression model and fit the model               
-#reg_model1.fit (x1,y1)
-predictions1 = reg_model1.predict(x1)                      # Obtain the predicted response for sepal width and sepal length 
-
-# reference: https://towardsdatascience.com/the-complete-guide-to-linear-regression-in-python-3d3f8f06bf8
-
-plt.scatter(x, y, c = 'blue')                              # use plt scatterplot to visualise the fitted regression model on the petal data 
-plt.plot(x, predictions, c = 'red')
-plt.xlabel('Petal Width')
-plt.ylabel('Petal Length')
-plt.title('Regression Analysis of Petal Width Versus Petal Length')
-plt.savefig('regression_analysis_petal.png', bbox_inches='tight', dpi=300)
-plt.close()
-
-
-plt.scatter(x1, y1, c = 'blue')                            # use plt scatterplot to visualise the fitted regression model on the sepal data   
-plt.plot(x1, predictions1, c = 'red')
-plt.xlabel('Sepal Width')
-plt.ylabel('Sepal Length')
-plt.title('Regression Analysis of Sepal Width Versus Sepal Length')
-plt.savefig('regression_analysis_sepal.png', bbox_inches='tight', dpi=300)
-plt.close()
+# x = data['petal width'].values.reshape(-1,1)                # Reshape both x and y data to create two dimensional arrays required for regression modeling
+# y = data['petal length'].values.reshape(-1,1)
+# x1 = data['sepal width'].values.reshape(-1,1)
+# y1 = data['sepal length'].values.reshape(-1,1)
+# 
+# 
+# 
+# reg_model = LinearRegression().fit (x,y)                   # Create an instance of the class LinearRegression representing the regression model and fit the model                                                     
+# predictions = reg_model.predict(x)                         # Obtain the predicted response for petal width and petal length
+# reg_model1 = LinearRegression().fit (x1,y1)                # Create a second instance of the class LinearRegression representing the regression model and fit the model               
+# predictions1 = reg_model1.predict(x1)                      # Obtain the predicted response for sepal width and sepal length 
+# 
+# # reference: https://towardsdatascience.com/the-complete-guide-to-linear-regression-in-python-3d3f8f06bf8
+# 
+# plt.scatter(x, y, c = 'blue')                              # use plt scatterplot to visualise the fitted regression model on the petal data 
+# plt.plot(x, predictions, c = 'red')
+# plt.xlabel('Petal Width')
+# plt.ylabel('Petal Length')
+# plt.title('Regression Analysis of Petal Width Versus Petal Length')
+# plt.savefig('regression_analysis_petal.png', bbox_inches='tight', dpi=300)
+# plt.close()
+# 
+# 
+# plt.scatter(x1, y1, c = 'blue')                            # use plt scatterplot to visualise the fitted regression model on the sepal data   
+# plt.plot(x1, predictions1, c = 'red')
+# plt.xlabel('Sepal Width')
+# plt.ylabel('Sepal Length')
+# plt.title('Regression Analysis of Sepal Width Versus Sepal Length')
+# plt.savefig('regression_analysis_sepal.png', bbox_inches='tight', dpi=300)
+# plt.close()
 
 
 # reference : https://www.statsmodels.org/stable/gettingstarted.html
 
-X = data['petal length']                            # define the x axis data for ordinary least squared (OLS) regression)
-y = data['petal width']                             # define the y axis data for ordinary least squared (OLS) regression)
+X = data['petal width']                             # define the x axis data for ordinary least squared (OLS) regression)
+y = data['petal length']                            # define the y axis data for ordinary least squared (OLS) regression)
 X2 = sm.add_constant(X)                             # add a column of 1s so that model has an intercept
 model = sm.OLS(y, X2)                               # Describe OLS regression model (Linear regression)
 results = model.fit()                               # Fit the OLS regression model
-
+print ('\n' * 3)
+print('Model Parameters: ', results.params)               # return the values for the regression equation
 
 # reference : https://docs.python.org/3/library/contextlib.html#contextlib.redirect_stdout
 with open('petal_model_summary.txt', 'w') as f:     # redirecting the output of the model summary to a txt file
@@ -203,11 +202,13 @@ with open('petal_model_summary.txt', 'w') as f:     # redirecting the output of 
         print(results.summary())
 
 
-X = data['sepal length']                            # define the x axis data for ordinary least squared (OLS) regression)                          
-y = data['sepal width']                             # define the y axis data for ordinary least squared (OLS) regression)
+X = data['sepal width']                             # define the x axis data for ordinary least squared (OLS) regression)                          
+y = data['sepal length']                            # define the y axis data for ordinary least squared (OLS) regression)
 X2 = sm.add_constant(X)                             # add a column of 1s so that model has an intercept
 model = sm.OLS(y, X2)                               # Describe OLS regression model (Linear regression)
 results = model.fit()                               # Fit the OLS regression model
+print ('\n' * 3)
+print('Model Parameters: ', results.params)               # return the values for the regression equation
 
 with open('sepal_model_summary.txt', 'w') as f:     # redirecting the output of the model summary to a txt file
     with redirect_stdout(f):
