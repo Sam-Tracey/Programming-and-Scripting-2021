@@ -13,53 +13,24 @@ import statsmodels.api as sm
 # from sklearn.linear_model import LinearRegression
 
 
-
-
-# First step is to read the iris.csv file in as a dataframe called data.
-# we then assign column headers for aesthetics.
-# Finally we display the summary statistics to the screen
-data = pd.read_csv('iris.csv')
-data.columns = ['sepal length', 'sepal width', 'petal length', 'petal width', 'species']
-
-# Print the top 5 lines of the data set
-# Reference: https://www.w3resource.com/python-exercises/pandas/movies/python-pandas-movies-exercise-9.php
-print(data.head())
-
-
-# reference: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html
-print ('\n' * 3)
-print ('\t\t********** Summary Statistics **********')
-print ('\n')
-print (data.describe())
-
-
-# reference: https://realpython.com/python-data-cleaning-numpy-pandas/
-print('Check Each Column to Ensure no Missing Data\n')
-print(data.isnull().sum())
-
-
 # dataframe_image.export allows us to save the output of the summarydata.describe as a .png file
 # reference: https://stackoverflow.com/a/63387275
+def summary_stats():
+    dfi.export(data.describe(), 'table_1.png')
 
-
-dfi.export(data.describe(), 'table_1.png')
-# Splitting the data set by species of flower and describing the data for each group individually then saving to folder as png.
-# reference: https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html
-setosa = data.loc[data.species== 'setosa',:]
-dfi.export(setosa.describe(), 'table_2.png')
-versicolor = data.loc[data.species== 'versicolor',:]
-dfi.export(versicolor.describe(), 'table_3.png')
-virginica = data.loc[data.species== 'virginica',:]
-dfi.export(virginica.describe(), 'table_4.png')
+    # describing the data for each group individually then saving to folder as png.
+    
+    dfi.export(setosa.describe(), 'table_2.png')
+    dfi.export(versicolor.describe(), 'table_3.png')
+    dfi.export(virginica.describe(), 'table_4.png')
 
 
 
-# Exploratory Data Analysis - Data Visualization - reference for mean markers on Zotero
+# Exploratory Data Analysis - Data Visualization
 # Plotting boxplots for each column using a for loop to iterate through all columns in the data set (except species)
-sns.set(style='darkgrid')
 
 def boxplots():
-    for column in data.columns[:4]:  # Loop over all columns except 'Species'
+    for column in data.columns[:4]:                             # Loop over all columns except 'Species'
         sns.set()
         fig, ax = plt.subplots()                                # create a figure and set of sub plots (standardise layout)
         sns.set(style='ticks')
@@ -85,14 +56,14 @@ def boxplots():
 # KDE plots using for loop
 # reference: https://seaborn.pydata.org/tutorial/distributions.html
 def density_plots():
-    for column in data.columns[:4]:  # Loop over all columns except 'Species'
+    for column in data.columns[:4]:                             # Loop over all columns except 'Species'
         sns.set()
-        fig, ax = plt.subplots()                              # create a figure and set of sub plots (standardise layout)
-        sns.kdeplot(data=data, x=column, hue='species')       # define the data for the KDE plot and specify the attribute (species)
+        fig, ax = plt.subplots()                                # create a figure and set of sub plots (standardise layout)
+        sns.kdeplot(data=data, x=column, hue='species')         # define the data for the KDE plot and specify the attribute (species)
         plt.title('Kernal Density Estimation (KDE) Plot of {}'.format(column), fontsize=20)
         fig.set_size_inches(8, 8)
-        plt.savefig('KDE_of_{}.png'.format(column), dpi=300)  # filename based on column name in Iris Data set
-    plt.close('all')                                          # Since this block creates 4 separate graphs we used close all to shut them all down.
+        plt.savefig('KDE_of_{}.png'.format(column), dpi=300)    # filename based on column name in Iris Data set
+    plt.close('all')                                            # Since this block creates 4 separate graphs we used close all to shut them all down.
 
 
 
@@ -127,7 +98,7 @@ def normality_test():
 def setosa_check():
     sns.displot(setosa, x='petal width', kde=True)              
     plt.title('Further Examination of Setosa Distribution', fontsize=14)
-    plt.savefig('Distribution_plot_Setosa.png', bbox_inches='tight', dpi=300)            # reference available in zotero
+    plt.savefig('Distribution_plot_Setosa.png', bbox_inches='tight', dpi=300)            # reference: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html
     plt.close()
 
 #Examining correlation of petals and Sepals
@@ -199,7 +170,7 @@ def regression_analysis():
     model = sm.OLS(y, X2)                               # Describe OLS regression model (Linear regression)
     results = model.fit()                               # Fit the OLS regression model
     print ('\n' * 3)
-    print('Model Parameters: ', results.params)               # return the values for the regression equation
+    print('Model Parameters: ', results.params)         # return the values for the regression equation
 
     # reference : https://docs.python.org/3/library/contextlib.html#contextlib.redirect_stdout
     with open('petal_model_summary.txt', 'w') as f:     # redirecting the output of the model summary to a txt file
@@ -213,13 +184,44 @@ def regression_analysis():
     model = sm.OLS(y, X2)                               # Describe OLS regression model (Linear regression)
     results = model.fit()                               # Fit the OLS regression model
     print ('\n' * 3)
-    print('Model Parameters: ', results.params)               # return the values for the regression equation
+    print('Model Parameters: ', results.params)         # return the values for the regression equation
 
     with open('sepal_model_summary.txt', 'w') as f:     # redirecting the output of the model summary to a txt file
         with redirect_stdout(f):
             print(results.summary())
 
 
+# Main Program.
+
+# First step is to read the iris.csv file in as a dataframe called data.
+# we then assign column headers for aesthetics.
+# Finally we display the summary statistics to the screen
+data = pd.read_csv('iris.csv')
+data.columns = ['sepal length', 'sepal width', 'petal length', 'petal width', 'species']
+
+# Print the top 5 lines of the data set
+# Reference: https://www.w3resource.com/python-exercises/pandas/movies/python-pandas-movies-exercise-9.php
+print(data.head())
+
+
+# reference: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html
+print ('\n' * 3)
+print ('\t\t********** Summary Statistics **********')
+print ('\n')
+print (data.describe())
+
+# reference: https://realpython.com/python-data-cleaning-numpy-pandas/
+print('Check Each Column to Ensure no Missing Data\n')
+print(data.isnull().sum())
+
+setosa = data.loc[data.species== 'setosa',:]            # Slicing the original data dataFrame based on the label and creating 3 separate species dataFrames.
+versicolor = data.loc[data.species== 'versicolor',:]    # reference: https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html
+virginica = data.loc[data.species== 'virginica',:]
+
+sns.set(style='darkgrid')                               # setting the style for all seaborn plots to darkgrid.
+
+
+# calling each of the functions for the analysis.
 boxplots()
 density_plots()
 normality_test()

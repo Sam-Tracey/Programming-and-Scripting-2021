@@ -4,7 +4,7 @@ Dep. Variable:           sepal length   R-squared:                       0.014
 Model:                            OLS   Adj. R-squared:                  0.007
 Method:                 Least Squares   F-statistic:                     2.074
 Date:                Sat, 24 Apr 2021   Prob (F-statistic):              0.152
-Time:                        11:30:07   Log-Likelihood:                -183.00
+Time:                        12:05:33   Log-Likelihood:                -183.00
 No. Observations:                 150   AIC:                             370.0
 Df Residuals:                     148   BIC:                             376.0
 Df Model:                           1                                         

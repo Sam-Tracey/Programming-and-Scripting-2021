@@ -10,7 +10,7 @@
 * [The Iris Dataset](#the-iris-dataset)
 * [Methods](#methods)
 * [Exploratory Data Analysis](#exploratory-data-analysis)
-    * [Importing The Necessary Modules and Loading the Iris Dataset](#importing-the-necessary-modules-and-loading-the-iris-dataset)
+    * [Importing The Necessary Libraries and Loading the Iris Dataset](#importing-the-necessary-libraries-and-loading-the-iris-dataset)
     * [Descriptive Statistics](#descriptive-statistics)
 	* [Graphical Displays](#graphical-displays)	
 		* [Boxplots](#boxplots)
@@ -83,7 +83,7 @@ Fisher’s data set as it was recorded originally.
 <br/>
 # Methods
 
-The following software, modules and files were used throughout this project:
+The following software, libraries and files were used throughout this project:
 
 -   Python version 3.8.5 via Anaconda 2020.11
 
@@ -132,13 +132,13 @@ outliers and find interesting relationships amongst the variables [8].
 <br/>
 <br/>
 <br/>
-## Importing the Necessary Modules and Loading the Iris Dataset
+## Importing the Necessary Libraries and Loading the Iris Dataset
 
-The first part of analysis in both Minitab and Python is to import all modules
+The first part of analysis in both Minitab and Python is to import all libraries
 that we will be using and to load the data to be analysed into the software.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Import the necessary modules
+# Import the necessary libraries
 from contextlib import redirect_stdout
 import numpy as np
 import pandas as pd
@@ -149,16 +149,16 @@ import scipy.stats as stats
 import statsmodels.api as sm
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can check to ensure that you have the necessary modules installed on your
+You can check to ensure that you have the necessary libraries installed on your
 environment by using the following command in your terminal:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 pip list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you do not see one of the modules I have imported when you run your pip list
-command, you can install specific modules with the following command in your
-terminal (replace SomePackage with the name of the missing module):
+If you do not see one of the libraries I have imported when you run your pip list
+command, you can install specific libraries with the following command in your
+terminal (replace SomePackage with the name of the missing library):
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 python -m pip install SomePackage
@@ -166,7 +166,7 @@ python -m pip install SomePackage
 
 Minitab provides a GUI to browse for a file to open via Windows File Explorer.
 In Python we can read a comma-separated file into a Dataframe named ‘data’ using
-only a single line of code and the built-in functionality of the pandas module:
+only a single line of code and the built-in functionality of the pandas library:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 data = pd.read_csv('iris.csv')
@@ -337,7 +337,7 @@ generated](media/51258535d4d903bf3332907681f9334b.png)
 <br/>
 <br/>
 <br/>
-To replicate this output in Python we make use of the Seaborn module to create
+To replicate this output in Python we make use of the Seaborn library to create
 the box plots. Initially I had separate lines of code to display a box plot for
 each column of data but was able to research a method to use a for loop to
 iterate through each of the columns in a DataFrame plotting a box plot for each
@@ -396,7 +396,7 @@ generated](media/4ce96fc1c020990e2759d49059fe4fee.png)
 <br/>
 <br/>
 <br/>
-Once again, using the Seaborn module we can replicate this output in Python.
+Once again, using the Seaborn library we can replicate this output in Python.
 Using the same for loop concept as described in the boxplot section we can
 iterate over each of the columns in our DataFrame, create the four density plots
 and save the output of the four separate plots to our folder [17]:
@@ -424,7 +424,7 @@ automatically generated](media/0867537fd758ec2ba198303e4af52403.png)
 You will notice that there are distinct differences between the output of the
 density plots generated in Python compared to those from Minitab. Where Minitab
 only allows you to display a normal distribution for each variable the Seaborn
-module in Python uses Kernal Density Estimation (KDE) and, while beyond the
+library in Python uses Kernal Density Estimation (KDE) and, while beyond the
 scope of this paper, kernel density estimates converge faster to the true
 underlying density for continuous random variables such as those in the Iris
 data set. [18]
@@ -502,7 +502,7 @@ print('\nFor Versicolor Species:\n')
 <br/>
 From the output we can see that the petal width data for the Setosa species of
 Iris does not follow a normal distribution so we can further investigate this in
-Python by plotting a distribution plot using the seaborn module:
+Python by plotting a distribution plot using the seaborn library:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sns.displot(setosa, x='petal width', kde=True)              
@@ -540,7 +540,7 @@ generated](media/693560d74e568d11a723f380f96109aa.png)
 <br/>
 <br/>
 <br/>
-The Seaborn module has a fabulous function called the pairplot which generates a
+The Seaborn library has a fabulous function called the pairplot which generates a
 similar, but in my opinion, superior graph using one line of code!
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -640,14 +640,14 @@ ANOVA table describing the sources of variance and finally a table listing any
 unusual observations that may warrant further investigation.
 
 I found the easiest way to create a linear regression model in Python was to use
-the Statsmodels module. I had researched and experimented with scikit-learn’s
+the Statsmodels library. I had researched and experimented with scikit-learn’s
 LinearRegression function but found that it was more complex than statsmodels’
 OLS function and did not provide as much information on the model itself. The
 code for performing Linear regression using scikit-learn is commented out from
 lines 154 to 186.
 
 The following code block creates two linear regression models using the ordinary
-least squared methodology from the statsmodel module. The first model examines
+least squared methodology from the statsmodel library. The first model examines
 the regression between petal length and petal width. The second model examines
 the regression between sepal length and sepal width. [26]
 
@@ -720,25 +720,29 @@ The purpose of this project was to determine if Python could be used by my
 company to replace the current “off the shelf” statistical analysis software
 that is used which has a price of €1709.70 per license. We have
 demonstrated that in a relatively short period of time, a novice Python
-programmer with only 8 weeks of experience, is able to replicate everything that
-would typically be performed in terms of exploratory data analysis and
-regression analysis. Furthermore we are only really scratching the surface in terms
-of what can be done with Python.\
-
+programmer with only 8 weeks of experience, is able to replicate boxplots, density plots,
+histograms, summary statistics, correlation analysis and regression modelling that we would typically
+use in our day to day routine in my workplace.
+<br/>
+Furthermore we are only really scratching the surface in terms
+of what can be done with Python.
+<br/>
 Our current software is very limited when it comes to predictive analytics.
 Only two tools are offered: Classification and Regression Trees for continuous variables
 and Classification and Regression Trees for categorical variables.
 Python on the otherhand is reknowned for its data science and machine learning libraries.
 Libraries such as Keras, SciKit-Learn, PyTorch and TensorFlow are designed specifically for 
 data science, machine learning and predictive analytics. Also, as Python is open source, 
-there is an abundance of material freely available online to show how to use these libraries. 
-One objection that may be raised for using Python over an "off the shelf" analysis package 
+there is an abundance of material freely available online to show how to use these libraries.
+<br/> 
+One objection that may be raised for using Python over "off the shelf" analysis software 
 is the fact that it takes quite a lot of coding to do the same amount of work using Python as 
-can be achieved in 30 minutes using a graphical user interfaced package. The good news is 
-that libraries such as Bokeh exist which enable interactive data visualizations to be created. 
-The use of Bokeh would allow someone with a little experience in Python to create 
-an HTML based platform to perform any exploratory analysis that they may need to carry out 
-on a dataset without the need for programming experience. [27] 
+can be achieved in 30 minutes using a graphical user interface package. 
+I believe this is a fair argument for those with no experience in computer programming who do not
+have a need to perform extensive data analysis or modelling.
+However, for those of us in the Business Intelligence department and Business Analysis department I would
+propose that a subscription to a site such as DataCamp would make much more sense than purchasing licenses
+for our current, limited, analysis software.
 <br/>
 <br/>
 <br/>
