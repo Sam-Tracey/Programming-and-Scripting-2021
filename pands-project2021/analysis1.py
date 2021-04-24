@@ -41,8 +41,8 @@ print(data.isnull().sum())
 # dataframe_image.export allows us to save the output of the summarydata.describe as a .png file
 # reference: https://stackoverflow.com/a/63387275
 
-dfi.export(data.describe(), 'table_1.png')
 
+dfi.export(data.describe(), 'table_1.png')
 # Splitting the data set by species of flower and describing the data for each group individually then saving to folder as png.
 # reference: https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html
 setosa = data.loc[data.species== 'setosa',:]
@@ -58,97 +58,102 @@ dfi.export(virginica.describe(), 'table_4.png')
 # Plotting boxplots for each column using a for loop to iterate through all columns in the data set (except species)
 sns.set(style='darkgrid')
 
-for column in data.columns[:4]:  # Loop over all columns except 'Species'
-    sns.set()
-    fig, ax = plt.subplots()                                # create a figure and set of sub plots (standardise layout)
-    sns.set(style='ticks')
-    sns.boxplot(x='species',
-            y=column,                                       # column is chosen from iris data set based on loop iteration
-            data=data,                                      # Specify data to be used (data dataFrame)
-            order=['setosa', 'versicolor', 'virginica'],
-            showmeans = True,                               # Show a mean marker on the boxplot
-            meanprops={'marker':'o',                        # Modify the mean marker attributes to make it stand out.
-                       'markerfacecolor':'white', 
-                       'markeredgecolor':'black',
-                       'markersize':'10'})
+def boxplots():
+    for column in data.columns[:4]:  # Loop over all columns except 'Species'
+        sns.set()
+        fig, ax = plt.subplots()                                # create a figure and set of sub plots (standardise layout)
+        sns.set(style='ticks')
+        sns.boxplot(x='species',
+                y=column,                                       # column is chosen from iris data set based on loop iteration
+                data=data,                                      # Specify data to be used (data dataFrame)
+                order=['setosa', 'versicolor', 'virginica'],
+                showmeans = True,                               # Show a mean marker on the boxplot
+                meanprops={'marker':'o',                        # Modify the mean marker attributes to make it stand out.
+                           'markerfacecolor':'white', 
+                           'markeredgecolor':'black',
+                           'markersize':'10'})
 
-    # Format the box plots (remove spines from top and bottom, add titles, specify font size of title, specify size of plot and save to folder)
-    sns.despine(offset=10, trim=True)
-    plt.title('Box Plot of {}'.format(column), fontsize=20)
-    fig.set_size_inches(8, 8)
-    plt.savefig('Boxplot_of_{}.png'.format(column), dpi=300)  # filename based on column name in Iris Data set
-plt.close()
+        # Format the box plots (remove spines from top and bottom, add titles, specify font size of title, specify size of plot and save to folder)
+        sns.despine(offset=10, trim=True)
+        plt.title('Box Plot of {}'.format(column), fontsize=20)
+        fig.set_size_inches(8, 8)
+        plt.savefig('Boxplot_of_{}.png'.format(column), dpi=300)  # filename based on column name in Iris Data set
+    plt.close()
 
 
 
 # KDE plots using for loop
 # reference: https://seaborn.pydata.org/tutorial/distributions.html
-for column in data.columns[:4]:  # Loop over all columns except 'Species'
-    sns.set()
-    fig, ax = plt.subplots()                              # create a figure and set of sub plots (standardise layout)
-    sns.kdeplot(data=data, x=column, hue='species')       # define the data for the KDE plot and specify the attribute (species)
-    plt.title('Kernal Density Estimation (KDE) Plot of {}'.format(column), fontsize=20)
-    fig.set_size_inches(8, 8)
-    plt.savefig('KDE_of_{}.png'.format(column), dpi=300)  # filename based on column name in Iris Data set
-plt.close('all')                                          # Since this block creates 4 separate graphs we used close all to shut them all down.
+def density_plots():
+    for column in data.columns[:4]:  # Loop over all columns except 'Species'
+        sns.set()
+        fig, ax = plt.subplots()                              # create a figure and set of sub plots (standardise layout)
+        sns.kdeplot(data=data, x=column, hue='species')       # define the data for the KDE plot and specify the attribute (species)
+        plt.title('Kernal Density Estimation (KDE) Plot of {}'.format(column), fontsize=20)
+        fig.set_size_inches(8, 8)
+        plt.savefig('KDE_of_{}.png'.format(column), dpi=300)  # filename based on column name in Iris Data set
+    plt.close('all')                                          # Since this block creates 4 separate graphs we used close all to shut them all down.
 
 
 
 # Normality testing each individual species - reference saved for D'Agostino's K2 Test for normality
 # reference: https://machinelearningmastery.com/a-gentle-introduction-to-normality-tests-in-python/
 
-print('\nFor Setosa Species:\n')
-for param in ['sepal length', 'sepal width', 'petal length', 'petal width']:        # For loop to iterate through each column of the Setosa DataFrame
-    z, pval = stats.normaltest(setosa[param])                                       # Use Scipy's normaltest to return a tuple containing the z-score and p-value.
-    if(pval < 0.05):                                                                # Test for normality (< 0.05 is not normal)
-        print('%s has a p-value of %f - distribution is not normal' % (param, pval))
-    else:
-        print('%s has a p-value of %f' % (param, pval))
+def normality_test():
+    print('\nFor Setosa Species:\n')
+    for param in ['sepal length', 'sepal width', 'petal length', 'petal width']:        # For loop to iterate through each column of the Setosa DataFrame
+        z, pval = stats.normaltest(setosa[param])                                       # Use Scipy's normaltest to return a tuple containing the z-score and p-value.
+        if(pval < 0.05):                                                                # Test for normality (< 0.05 is not normal)
+            print('%s has a p-value of %f - distribution is not normal' % (param, pval))
+        else:
+            print('%s has a p-value of %f' % (param, pval))
 
-print('\nFor Virginica Species:\n')
-for param in ['sepal length', 'sepal width', 'petal length', 'petal width']:
-    z, pval = stats.normaltest(virginica[param])
-    if(pval < 0.05):
-        print('%s has a p-value of %f - distribution is not normal' % (param, pval))
-    else:
-        print('%s has a p-value of %f' % (param, pval))
+    print('\nFor Virginica Species:\n')
+    for param in ['sepal length', 'sepal width', 'petal length', 'petal width']:
+        z, pval = stats.normaltest(virginica[param])
+        if(pval < 0.05):
+            print('%s has a p-value of %f - distribution is not normal' % (param, pval))
+        else:
+            print('%s has a p-value of %f' % (param, pval))
 
-print('\nFor Versicolor Species:\n')
-for param in ['sepal length', 'sepal width', 'petal length', 'petal width']:
-    z, pval = stats.normaltest(versicolor[param])
-    if(pval < 0.05):
-        print('%s has a p-value of %f - distribution is not normal' % (param, pval))
-    else:
-        print('%s has a p-value of %f' % (param, pval))
+    print('\nFor Versicolor Species:\n')
+    for param in ['sepal length', 'sepal width', 'petal length', 'petal width']:
+        z, pval = stats.normaltest(versicolor[param])
+        if(pval < 0.05):
+            print('%s has a p-value of %f - distribution is not normal' % (param, pval))
+        else:
+            print('%s has a p-value of %f' % (param, pval))
 
-sns.displot(setosa, x='petal width', kde=True)              
-plt.title('Further Examination of Setosa Distribution', fontsize=14)
-plt.savefig('Distribution_plot_Setosa.png', bbox_inches='tight', dpi=300)            # reference available in zotero
-plt.close()
+def setosa_check():
+    sns.displot(setosa, x='petal width', kde=True)              
+    plt.title('Further Examination of Setosa Distribution', fontsize=14)
+    plt.savefig('Distribution_plot_Setosa.png', bbox_inches='tight', dpi=300)            # reference available in zotero
+    plt.close()
 
 #Examining correlation of petals and Sepals
 # reference for data.corr function: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html
-dfi.export(data.corr(method = 'pearson'), 'table_5.png')
-dfi.export(setosa.corr(method = 'pearson'), 'table_6.png')
-dfi.export(virginica.corr(method = 'pearson'), 'table_7.png')
-dfi.export(versicolor.corr(method = 'pearson'), 'table_8.png')
+def correlations():
+    dfi.export(data.corr(method = 'pearson'), 'table_5.png')
+    dfi.export(setosa.corr(method = 'pearson'), 'table_6.png')
+    dfi.export(virginica.corr(method = 'pearson'), 'table_7.png')
+    dfi.export(versicolor.corr(method = 'pearson'), 'table_8.png')
 
-# visualising correlations for each species - note setosa is an outlier.
+    # visualising correlations for each species - note setosa is an outlier.
 
-sns.pairplot(data, hue='species', palette='OrRd')
-plt.savefig('pairplot_by_species.png', dpi=300)
-plt.close()
+    sns.pairplot(data, hue='species', palette='OrRd')
+    plt.savefig('pairplot_by_species.png', dpi=300)
+    plt.close()
 
 
-sns.lmplot(x='sepal length', y='sepal width', data = data, hue = 'species', markers =['.', 'x', '+'])
-plt.xlim(left=4, right=8)
-plt.savefig('regression_plot_sepal.png', bbox_inches='tight', dpi=300)
-plt.close()
+    sns.lmplot(x='sepal length', y='sepal width', data = data, hue = 'species', markers =['.', 'x', '+'])
+    plt.xlim(left=4, right=8)
+    plt.savefig('regression_plot_sepal.png', bbox_inches='tight', dpi=300)
+    plt.close()
 
-sns.lmplot(x='petal length', y='petal width', data = data, hue = 'species', markers =['.', 'x', '+'])
-plt.xlim(left=0.7, right=7)
-plt.savefig('regression_plot_petal.png', bbox_inches='tight', dpi=300)
-plt.close()
+    sns.lmplot(x='petal length', y='petal width', data = data, hue = 'species', markers =['.', 'x', '+'])
+    plt.xlim(left=0.7, right=7)
+    plt.savefig('regression_plot_petal.png', bbox_inches='tight', dpi=300)
+    plt.close()
 
 
 # Regression analysis. Reference: https://towardsdatascience.com/the-complete-guide-to-linear-regression-in-python-3d3f8f06bf8
@@ -187,29 +192,37 @@ plt.close()
 
 
 # reference : https://www.statsmodels.org/stable/gettingstarted.html
+def regression_analysis():
+    X = data['petal width']                             # define the x axis data for ordinary least squared (OLS) regression)
+    y = data['petal length']                            # define the y axis data for ordinary least squared (OLS) regression)
+    X2 = sm.add_constant(X)                             # add a column of 1s so that model has an intercept
+    model = sm.OLS(y, X2)                               # Describe OLS regression model (Linear regression)
+    results = model.fit()                               # Fit the OLS regression model
+    print ('\n' * 3)
+    print('Model Parameters: ', results.params)               # return the values for the regression equation
 
-X = data['petal width']                             # define the x axis data for ordinary least squared (OLS) regression)
-y = data['petal length']                            # define the y axis data for ordinary least squared (OLS) regression)
-X2 = sm.add_constant(X)                             # add a column of 1s so that model has an intercept
-model = sm.OLS(y, X2)                               # Describe OLS regression model (Linear regression)
-results = model.fit()                               # Fit the OLS regression model
-print ('\n' * 3)
-print('Model Parameters: ', results.params)               # return the values for the regression equation
-
-# reference : https://docs.python.org/3/library/contextlib.html#contextlib.redirect_stdout
-with open('petal_model_summary.txt', 'w') as f:     # redirecting the output of the model summary to a txt file
-    with redirect_stdout(f):
-        print(results.summary())
+    # reference : https://docs.python.org/3/library/contextlib.html#contextlib.redirect_stdout
+    with open('petal_model_summary.txt', 'w') as f:     # redirecting the output of the model summary to a txt file
+        with redirect_stdout(f):
+            print(results.summary())
 
 
-X = data['sepal width']                             # define the x axis data for ordinary least squared (OLS) regression)                          
-y = data['sepal length']                            # define the y axis data for ordinary least squared (OLS) regression)
-X2 = sm.add_constant(X)                             # add a column of 1s so that model has an intercept
-model = sm.OLS(y, X2)                               # Describe OLS regression model (Linear regression)
-results = model.fit()                               # Fit the OLS regression model
-print ('\n' * 3)
-print('Model Parameters: ', results.params)               # return the values for the regression equation
+    X = data['sepal width']                             # define the x axis data for ordinary least squared (OLS) regression)                          
+    y = data['sepal length']                            # define the y axis data for ordinary least squared (OLS) regression)
+    X2 = sm.add_constant(X)                             # add a column of 1s so that model has an intercept
+    model = sm.OLS(y, X2)                               # Describe OLS regression model (Linear regression)
+    results = model.fit()                               # Fit the OLS regression model
+    print ('\n' * 3)
+    print('Model Parameters: ', results.params)               # return the values for the regression equation
 
-with open('sepal_model_summary.txt', 'w') as f:     # redirecting the output of the model summary to a txt file
-    with redirect_stdout(f):
-        print(results.summary())
+    with open('sepal_model_summary.txt', 'w') as f:     # redirecting the output of the model summary to a txt file
+        with redirect_stdout(f):
+            print(results.summary())
+
+
+boxplots()
+density_plots()
+normality_test()
+setosa_check()
+correlations()
+regression_analysis()

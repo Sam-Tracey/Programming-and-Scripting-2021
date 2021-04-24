@@ -82,29 +82,30 @@ for column in data.columns[:4]:  # Loop over all columns except 'Species'
 
 
 # Normality testing each individual species - reference saved for D'Agostino's K2 Test for normality
-print("\nFor Setosa Species:\n")
-for param in ["sepal length", "sepal width", "petal length", "petal width"]:
-    z, pval = stats.normaltest(setosa[param])
-    if(pval < 0.05):
-        print("%s has a p-value of %f - distribution is not normal" % (param, pval))
-    else:
-        print("%s has a p-value of %f" % (param, pval))
+def normality_check():
+    print("\nFor Setosa Species:\n")
+    for param in ["sepal length", "sepal width", "petal length", "petal width"]:
+        z, pval = stats.normaltest(setosa[param])
+        if(pval < 0.05):
+            print("%s has a p-value of %f - distribution is not normal" % (param, pval))
+        else:
+            print("%s has a p-value of %f" % (param, pval))
 
-print("\nFor Virginica Species:\n")
-for param in ["sepal length", "sepal width", "petal length", "petal width"]:
-    z, pval = stats.normaltest(virginica[param])
-    if(pval < 0.05):
-        print("%s has a p-value of %f - distribution is not normal" % (param, pval))
-    else:
-        print("%s has a p-value of %f" % (param, pval))
+    print("\nFor Virginica Species:\n")
+    for param in ["sepal length", "sepal width", "petal length", "petal width"]:
+        z, pval = stats.normaltest(virginica[param])
+        if(pval < 0.05):
+            print("%s has a p-value of %f - distribution is not normal" % (param, pval))
+        else:
+            print("%s has a p-value of %f" % (param, pval))
 
-print("\nFor Versicolor Species:\n")
-for param in ["sepal length", "sepal width", "petal length", "petal width"]:
-    z, pval = stats.normaltest(versicolor[param])
-    if(pval < 0.05):
-        print("%s has a p-value of %f - distribution is not normal" % (param, pval))
-    else:
-        print("%s has a p-value of %f" % (param, pval))
+    print("\nFor Versicolor Species:\n")
+    for param in ["sepal length", "sepal width", "petal length", "petal width"]:
+        z, pval = stats.normaltest(versicolor[param])
+        if(pval < 0.05):
+            print("%s has a p-value of %f - distribution is not normal" % (param, pval))
+        else:
+            print("%s has a p-value of %f" % (param, pval))
 
 sns.displot(setosa, x="petal width", kde=True)              
 plt.title("Further Examination of Setosa Distribution", fontsize=14)
@@ -189,3 +190,6 @@ est2 = est.fit()
 with open('sepal_model_summary.txt', 'w') as f:     # redirecting the output of the model summary to a txt file
     with redirect_stdout(f):
         print(est2.summary())
+
+
+normality_check()

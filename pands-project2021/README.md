@@ -718,12 +718,13 @@ produced by Minitab.
 
 The purpose of this project was to determine if Python could be used by my
 company to replace the current “off the shelf” statistical analysis software
-that is currently used which has a price of €1709.70 per license. We have
-demonstrated that in a relatively short period of time, a complete novice Python
+that is used which has a price of €1709.70 per license. We have
+demonstrated that in a relatively short period of time, a novice Python
 programmer with only 8 weeks of experience, is able to replicate everything that
 would typically be performed in terms of exploratory data analysis and
 regression analysis. Furthermore we are only really scratching the surface in terms
 of what can be done with Python.\
+
 Our current software is very limited when it comes to predictive analytics.
 Only two tools are offered: Classification and Regression Trees for continuous variables
 and Classification and Regression Trees for categorical variables.
@@ -732,8 +733,8 @@ Libraries such as Keras, SciKit-Learn, PyTorch and TensorFlow are designed speci
 data science, machine learning and predictive analytics. Also, as Python is open source, 
 there is an abundance of material freely available online to show how to use these libraries. 
 One objection that may be raised for using Python over an "off the shelf" analysis package 
-is the fact that it takes quite a lot of coding to do the same amount of work using Python which 
-can be achieved in 30 minutes using a graphical user interfaced package. \ The good news is 
+is the fact that it takes quite a lot of coding to do the same amount of work using Python as 
+can be achieved in 30 minutes using a graphical user interfaced package. The good news is 
 that libraries such as Bokeh exist which enable interactive data visualizations to be created. 
 The use of Bokeh would allow someone with a little experience in Python to create 
 an HTML based platform to perform any exploratory analysis that they may need to carry out 
