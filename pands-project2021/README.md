@@ -724,8 +724,10 @@ programmer with only 8 weeks of experience, is able to replicate boxplots, densi
 histograms, summary statistics, correlation analysis and regression modelling that we would typically
 use in our day to day routine in my workplace.
 <br/>
+<br/>
 Furthermore we are only really scratching the surface in terms
 of what can be done with Python.
+<br/>
 <br/>
 Our current software is very limited when it comes to predictive analytics.
 Only two tools are offered: Classification and Regression Trees for continuous variables
@@ -734,6 +736,7 @@ Python on the otherhand is reknowned for its data science and machine learning l
 Libraries such as Keras, SciKit-Learn, PyTorch and TensorFlow are designed specifically for 
 data science, machine learning and predictive analytics. Also, as Python is open source, 
 there is an abundance of material freely available online to show how to use these libraries.
+<br/>
 <br/> 
 One objection that may be raised for using Python over "off the shelf" analysis software 
 is the fact that it takes quite a lot of coding to do the same amount of work using Python as 
