@@ -38,7 +38,7 @@ language.
 
 As Python has been developed under an OSI-approved Open Source license [3] it is
 free to use and readily available to anyone. Being able to use Python for data
-analysis has a large cost saving implication for my employer.
+analysis has a large cost saving potential for my employer.
 <br/>
 <br/>
 <br/>
@@ -381,7 +381,7 @@ generated](media/f31626fb9919332ba3dd78282b21cb1c.png)
 
 A density plot represents the distribution of a numerical variable. It is
 essentially a smoothed version of the histogram plot. [16] We use density plots
-to investigate the distribution of the underlying data and is typically one of
+to investigate the distribution of the underlying data. This is typically one of
 the first tasks we would undertake when performing analysis of any data set.
 
 Using Minitab we can create a histogram graph for each variable in the Irish
@@ -661,7 +661,7 @@ model = sm.OLS(y, X2)                            
 results = model.fit()                               # Fit the OLS regression model
 print('Parameters: ', results.params)               # return the values for the regression equation
 
-# reference : https://docs.python.org/3/module/contextlib.html#contextlib.redirect_stdout
+
 with open('petal_model_summary.txt', 'w') as f:     # redirecting the output of the model summary to a txt file
     with redirect_stdout(f):
         print(results.summary())
