@@ -264,12 +264,13 @@ It is also possible to split the original Dataframe that we created in Python to
 provide descriptive statistics for the three species of Iris separately [12]:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-setosa = data.loc[data.species== 'setosa',:]
-dfi.export(setosa.describe(), 'table_2.png')
-versicolor = data.loc[data.species== 'versicolor',:]
-dfi.export(versicolor.describe(), 'table_3.png')
-virginica = data.loc[data.species== 'virginica',:]
-dfi.export(virginica.describe(), 'table_4.png')
+setosa = data.loc[data.species== 'setosa',:]        
+versicolor = data.loc[data.species== 'versicolor',:]
+virginica = data.loc[data.species== 'virginica',:]
+
+dfi.export(setosa.describe(), 'table_2.png')
+dfi.export(versicolor.describe(), 'table_3.png')
+dfi.export(virginica.describe(), 'table_4.png')
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <br/>
 <br/>
@@ -344,8 +345,6 @@ iterate through each of the columns in a DataFrame plotting a box plot for each
 one and saving these plots to a folder as .png files.[15]
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-sns.set(style='darkgrid')
-
  column in data.columns[:4]:  
     sns.set()
     fig, ax = plt.subplots()
