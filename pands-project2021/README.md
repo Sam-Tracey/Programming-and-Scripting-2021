@@ -744,7 +744,9 @@ I believe this is a fair argument for those with no experience in computer progr
 have a need to perform extensive data analysis or modelling.
 However, for those of us in the Business Intelligence department and Business Analysis department I would
 propose that a subscription to a site such as DataCamp would make much more sense than purchasing licenses
-for our current, limited, analysis software.
+for our current, limited, analysis software. Within the Business Intelligence and Business Analysis departments alone, 
+removing our licenses for Minitab and subscribing to Datacamp to pursue one of the career paths (such as Data Science With Python) 
+would generate a savings of €27,300 per annum.
 <br/>
 <br/>
 <br/>
